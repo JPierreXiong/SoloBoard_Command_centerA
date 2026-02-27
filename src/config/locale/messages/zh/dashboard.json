@@ -1,0 +1,100 @@
+{
+  "title": "SoloBoard 仪表盘",
+  "subtitle": "正在监控 {count} 个站点",
+  "refresh": "刷新",
+  "add_site": "添加站点",
+  "stats": {
+    "monitored_sites": "监控站点",
+    "online_status": "在线",
+    "last_sync": "最后同步",
+    "not_synced": "尚未同步"
+  },
+  "empty": {
+    "title": "还没有站点",
+    "description": "添加您的第一个站点开始监控您的网站",
+    "add_first": "添加第一个站点"
+  },
+  "errors": {
+    "load_failed": "加载站点失败",
+    "refresh_failed": "刷新数据失败",
+    "refresh_success": "数据刷新成功",
+    "retry": "重试"
+  },
+  "site": {
+    "status": {
+      "online": "在线",
+      "offline": "离线",
+      "unknown": "未知",
+      "active": "活跃",
+      "error": "错误",
+      "paused": "已暂停"
+    },
+    "metrics": {
+      "visitors": "访客",
+      "pageviews": "页面浏览量",
+      "revenue": "收入",
+      "transactions": "交易数",
+      "uptime": "在线率",
+      "response_time": "响应时间",
+      "no_data": "暂无数据",
+      "online": "在线",
+      "views": "浏览",
+      "primary": "主要指标"
+    },
+    "actions": {
+      "view_details": "查看趋势",
+      "edit": "设置",
+      "delete": "删除",
+      "deleting": "删除中...",
+      "delete_confirm": "确定要删除站点 \"{name}\" 吗？",
+      "delete_success": "站点已删除",
+      "delete_failed": "删除失败",
+      "pause": "暂停",
+      "resume": "恢复"
+    },
+    "last_updated": "最后更新",
+    "not_synced": "未同步",
+    "sync_failed": "同步失败"
+  },
+  "reorder_success": "排序已保存",
+  "reorder_failed": "保存排序失败",
+  "add_dialog": {
+    "title": "添加监控站点",
+    "platform_label": "选择平台",
+    "platform_description": "选择您要监控的服务",
+    "site_name": "站点名称",
+    "site_name_placeholder": "例如：我的网站",
+    "site_url": "站点网址",
+    "site_url_placeholder": "https://example.com",
+    "next": "下一步",
+    "back": "返回",
+    "cancel": "取消",
+    "submit": "添加站点",
+    "submitting": "添加中...",
+    "success": "站点添加成功！",
+    "error": "添加站点失败",
+    "platforms": {
+      "uptime": {
+        "title": "Uptime 监控",
+        "description": "网站在线状态"
+      },
+      "ga4": {
+        "title": "Google Analytics",
+        "description": "网站流量分析"
+      },
+      "stripe": {
+        "title": "Stripe",
+        "description": "支付和收入"
+      },
+      "lemon_squeezy": {
+        "title": "Lemon Squeezy",
+        "description": "数字产品销售"
+      },
+      "shopify": {
+        "title": "Shopify",
+        "description": "电商平台"
+      }
+    }
+  }
+}
+

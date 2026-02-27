@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "title": "Contact Us - SoloBoard",
+    "description": "Get in touch with the SoloBoard team. We're here to help with support, partnerships, and feature requests."
+  },
+  "hero": {
+    "title": "Let's Talk Shop",
+    "description": "Have a feature request, a bug to report, or just want to chat about the solopreneur life? We're always listening."
+  },
+  "channels": {
+    "items": [
+      {
+        "title": "Direct Support",
+        "description": "Response time: Usually under 12 hours",
+        "email": "support@soloboard.app"
+      },
+      {
+        "title": "Build in Public",
+        "description": "Follow our journey and get real-time updates",
+        "url": "https://twitter.com/SoloBoardApp",
+        "handle": "@SoloBoardApp"
+      },
+      {
+        "title": "Partnerships",
+        "description": "For collaborations or agency inquiries",
+        "email": "partners@soloboard.app"
+      }
+    ]
+  },
+  "location": {
+    "text": "Based in the cloud, serving founders worldwide 🌍"
+  },
+  "response_times": {
+    "title": "Response Times",
+    "items": [
+      {
+        "title": "Support Requests",
+        "time": "Usually under 12 hours"
+      },
+      {
+        "title": "Partnership Inquiries",
+        "time": "Within 2 business days"
+      }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+

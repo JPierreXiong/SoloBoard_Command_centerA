@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .result.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .result.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .result.info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 12px;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .fix-button {
+            background: #ff9800;
+            margin-left: 10px;
+        }
+        .fix-button:hover {
+            background: #e68900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Payment Status Checker</h1>
+        <p>Enter your email or order number to check payment status</p>
+        
+        <div class="input-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" placeholder="your@email.com">
+        </div>
+        
+        <div class="input-group">
+            <label for="orderNo">Order Number (optional):</label>
+            <input type="text" id="orderNo" placeholder="ORD-xxxxx">
+        </div>
+        
+        <button onclick="checkStatus()" id="checkBtn">Check Status</button>
+        
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Checking payment status...</p>
+        </div>
+        
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        async function checkStatus() {
+            const email = document.getElementById('email').value;
+            const orderNo = document.getElementById('orderNo').value;
+            const resultDiv = document.getElementById('result');
+            const loadingDiv = document.getElementById('loading');
+            const checkBtn = document.getElementById('checkBtn');
+            
+            if (!email && !orderNo) {
+                alert('Please enter your email or order number');
+                return;
+            }
+            
+            // Show loading
+            loadingDiv.style.display = 'block';
+            resultDiv.style.display = 'none';
+            checkBtn.disabled = true;
+            
+            try {
+                // Build query params
+                const params = new URLSearchParams();
+                if (orderNo) params.append('orderNo', orderNo);
+                
+                // Call diagnostic API
+                const response = await fetch(`https://soloboard-command-center-b.vercel.app/api/admin/check-payment-status?${params}`);
+                const data = await response.json();
+                
+                // Hide loading
+                loadingDiv.style.display = 'none';
+                checkBtn.disabled = false;
+                
+                // Display results
+                displayResults(data);
+                
+            } catch (error) {
+                loadingDiv.style.display = 'none';
+                checkBtn.disabled = false;
+                resultDiv.className = 'result error';
+                resultDiv.style.display = 'block';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+        
+        function displayResults(data) {
+            const resultDiv = document.getElementById('result');
+            
+            if (data.issues && data.issues.length > 0) {
+                // Found issues
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>⚠️ Issues Found</h3>
+                    <p><strong>Diagnosis:</strong> ${data.diagnosis}</p>
+                    <h4>Problems:</h4>
+                    <ul>
+                        ${data.issues.map(issue => `
+                            <li>
+                                <strong>${issue.type}:</strong> ${issue.message}
+                                <br><small>Order: ${issue.orderNo} | User: ${issue.userId}</small>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    <h4>Recommendations:</h4>
+                    <ul>
+                        ${data.recommendations ? data.recommendations.map(rec => `
+                            <li>
+                                <strong>${rec.issue}</strong><br>
+                                Solution: ${rec.solution}<br>
+                                <code>${rec.action}</code>
+                            </li>
+                        `).join('') : ''}
+                    </ul>
+                    <button onclick="fixPayment('${data.issues[0].orderNo}')" class="fix-button">
+                        🔧 Fix This Issue
+                    </button>
+                `;
+            } else {
+                // No issues
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <h3>✅ All Good!</h3>
+                    <p>${data.diagnosis}</p>
+                    <h4>Summary:</h4>
+                    <ul>
+                        <li>Total Orders: ${data.summary.totalOrders}</li>
+                        <li>Paid Orders: ${data.summary.paidOrders}</li>
+                        <li>Total Subscriptions: ${data.summary.totalSubscriptions}</li>
+                        <li>Active Subscriptions: ${data.summary.activeSubscriptions}</li>
+                    </ul>
+                `;
+            }
+            
+            resultDiv.style.display = 'block';
+            
+            // Show raw data
+            resultDiv.innerHTML += `
+                <details style="margin-top: 20px;">
+                    <summary style="cursor: pointer; font-weight: bold;">View Raw Data</summary>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                </details>
+            `;
+        }
+        
+        async function fixPayment(orderNo) {
+            if (!confirm(`Fix payment for order ${orderNo}?`)) {
+                return;
+            }
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Fixing payment... Please wait...</p>';
+            
+            try {
+                const response = await fetch('https://soloboard-command-center-b.vercel.app/api/admin/fix-payment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ orderNo }),
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ Fixed Successfully!</h3>
+                        <p>${data.message}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                        <p style="margin-top: 20px;">
+                            <strong>Next steps:</strong><br>
+                            1. Refresh your billing page<br>
+                            2. You should now see your subscription<br>
+                            3. Try logging in again
+                        </p>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ Fix Failed</h3>
+                        <p>${data.error}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+                
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ Error</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+

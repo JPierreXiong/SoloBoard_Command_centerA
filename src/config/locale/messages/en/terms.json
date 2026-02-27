@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "Terms of Service - SoloBoard",
+    "description": "Read SoloBoard's Terms of Service covering account security, API usage, subscriptions, and service scope."
+  },
+  "last_updated": "Last Updated: February 12, 2026",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Acceptance of Terms",
+      "content": "By accessing SoloBoard Command Center, you agree to these Terms. SoloBoard is a product of SoloBoard (\"we,\" \"us,\" or \"our\")."
+    },
+    {
+      "number": "2",
+      "title": "Service Scope",
+      "content": "SoloBoard provides a visualization tool. We do not own your data; we simply provide the interface to monitor your metrics from third-party providers (Stripe, GitHub, etc.)."
+    },
+    {
+      "number": "3",
+      "title": "Account Security",
+      "items": [
+        {
+          "subtitle": "API Keys",
+          "content": "You are responsible for the security of your API keys."
+        },
+        {
+          "subtitle": "Read-Only Access",
+          "content": "We strongly recommend providing Read-Only permissions for all third-party integrations to minimize risk."
+        },
+        {
+          "subtitle": "Encryption",
+          "content": "We secure your data using industry-standard AES-256 encryption."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Subscription & Payments",
+      "items": [
+        {
+          "subtitle": "Billing",
+          "content": "Subscriptions are billed in advance according to your selected plan (Starter, Base, or Pro)."
+        },
+        {
+          "subtitle": "Cancellations",
+          "content": "You may cancel at any time. Your access will remain active until the end of the current billing cycle."
+        },
+        {
+          "subtitle": "Refunds",
+          "content": "Refunds are handled on a case-by-case basis within 14 days of purchase."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Prohibited Use",
+      "content": "You agree not to use SoloBoard for any illegal activities or to attempt to breach our security infrastructure."
+    }
+  ],
+  "transparency_note": {
+    "content": "Have questions about our legal terms? We believe in transparency. Send a DM to our founder on X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+

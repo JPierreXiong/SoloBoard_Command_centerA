@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "title": "Disclaimer - SoloBoard",
+    "description": "Read SoloBoard's disclaimer regarding service availability, data accuracy, and limitation of liability."
+  },
+  "last_updated": "Last Updated: February 12, 2026",
+  "sections": [
+    {
+      "title": "\"As-Is\" Service",
+      "content": "SoloBoard Command Center is provided on an \"as-is\" and \"as-available\" basis. We make no warranties, expressed or implied, regarding the accuracy or availability of the service."
+    },
+    {
+      "title": "No Financial Advice",
+      "content": "The metrics, charts, and data displayed on SoloBoard are for informational purposes only. They do not constitute financial, investment, or legal advice. Always verify critical data directly via the source platform (e.g., your Stripe dashboard)."
+    },
+    {
+      "title": "Third-Party Failures",
+      "content": "SoloBoard relies on third-party APIs. We are not responsible for:",
+      "items": [
+        "Inaccuracies caused by third-party data providers",
+        "Temporary downtime of third-party services",
+        "Loss of data due to API changes by providers like Google or Apple"
+      ]
+    },
+    {
+      "title": "Limitation of Liability",
+      "content": "To the maximum extent permitted by law, SoloBoard shall not be liable for any indirect, incidental, or consequential damages (including loss of profits) arising out of your use of the service."
+    }
+  ],
+  "transparency_note": {
+    "content": "Have questions about our disclaimer? We believe in transparency. Send a DM to our founder on X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+

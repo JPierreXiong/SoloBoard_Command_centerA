@@ -1,0 +1,68 @@
+---
+title: "Dans les Coulisses d'Afterglow : Comment Fonctionne Notre Déchiffrement Zero-Knowledge"
+description: "Une plongée technique approfondie dans l'architecture de chiffrement zero-knowledge d'Afterglow et le processus de déchiffrement du coffre-fort"
+created_at: 2025-01-15
+slug: how-decryption-works
+---
+
+## Introduction
+
+Chez Afterglow, nous croyons que la sécurité ne devrait jamais reposer sur la "confiance" en un fournisseur de services. Au lieu de cela, elle devrait reposer sur des mathématiques vérifiables. Cet article explique les piliers techniques qui garantissent que votre héritage numérique reste privé jusqu'au moment exact où il doit être libéré.
+
+## 1. Vrai Chiffrement Côté Client
+
+Lorsque vous stockez un mot de passe ou un fichier dans votre coffre-fort Afterglow, le processus de chiffrement se produit entièrement dans votre navigateur.
+
+**Le Processus** : Votre Mot de Passe Principal est utilisé pour dériver une clé symétrique à haute entropie via l'algorithme PBKDF2 (Password-Based Key Derivation Function 2). Cet algorithme applique une fonction de hachage cryptographique des milliers de fois pour transformer votre mot de passe en une clé de chiffrement sécurisée.
+
+**Le Résultat** : Seul le "texte chiffré"—des données qui ressemblent à du bruit aléatoire—quitte jamais votre ordinateur. Les serveurs d'Afterglow ne détiennent jamais votre mot de passe brut ou vos clés. Même si nos serveurs étaient compromis, les attaquants ne verraient que du charabia chiffré.
+
+## 2. Le Mécanisme de Battement de Cœur
+
+Comment le système sait-il quand libérer votre héritage ? Nous utilisons une logique sophistiquée de "Battement de Cœur".
+
+**Le Contrat** : Les utilisateurs du niveau gratuit sont tenus d'effectuer une vérification tous les 180 jours pour confirmer leur statut actif. Les utilisateurs du plan de base vérifient tous les 90 jours, et les utilisateurs du plan Pro tous les 30 jours.
+
+**La Période de Grâce** : Si un battement de cœur est manqué, le système entre dans une "Période de Grâce", déclenchant une séquence d'alertes d'escalade via l'API Resend pour s'assurer que vous n'avez pas simplement oublié de vous connecter. Plusieurs e-mails de rappel sont envoyés avant que le processus d'héritage ne commence.
+
+**Le Déclencheur** : Ce n'est qu'après l'expiration de la période de grâce sans aucune activité que le système initie le flux de travail d'héritage prédéfini.
+
+## 3. Fragment A/B : La Clé Double à Sécurité Intégrée
+
+Pour éviter un point de défaillance unique, nous avons introduit le système Fragment A/B pour les utilisateurs Pro.
+
+**Fragment A (Cloud)** : Une écharde chiffrée stockée sur nos serveurs sécurisés. Ce fragment seul ne peut pas déchiffrer votre coffre-fort.
+
+**Fragment B (Physique)** : Un composant de déchiffrement unique livré par courrier physique via ShipAny ou détenu par un bénéficiaire désigné. Ce fragment seul ne peut pas non plus déchiffrer votre coffre-fort.
+
+**Logique de Sécurité** : L'accès au coffre-fort nécessite que les deux fragments soient combinés. Cela reflète les coffres-forts réels, où la clé de la banque et votre clé doivent fonctionner ensemble pour ouvrir le coffre-fort. Même si le Fragment A est compromis (violation du cloud) ou le Fragment B est perdu (vol physique), vos actifs restent sécurisés.
+
+## 4. Authentification des Bénéficiaires
+
+Lorsque le processus d'héritage est déclenché, les bénéficiaires doivent s'authentifier en utilisant :
+
+**Token de Libération** : Un token cryptographiquement sécurisé envoyé à l'adresse e-mail du bénéficiaire. Ce token a une période de validité limitée et ne peut être utilisé qu'une seule fois.
+
+**Vérification du Fragment** : Pour les plans Pro, les bénéficiaires doivent fournir le Fragment B (soit du courrier physique, soit de leur propre stockage sécurisé) ainsi que le Fragment A pour compléter le déchiffrement.
+
+## 5. Pourquoi Ne Pas Simplement Partager les Mots de Passe ?
+
+Beaucoup d'utilisateurs demandent : "Pourquoi ne pas simplement écrire les mots de passe et les donner aux membres de la famille ?"
+
+**Vulnérabilités de Sécurité** : Les enregistrements de mots de passe en texte brut sont facilement volés par des pirates, perdus dans des catastrophes physiques ou accessibles par des personnes non autorisées.
+
+**Accès Non Intentionnel** : Le partage préalable de mots de passe peut conduire à des disputes familiales ou à un accès prématuré avant le bon moment.
+
+**Pas d'Automatisation** : Le partage manuel de mots de passe ne tient pas compte de ce qui se passe si vous êtes incapable mais toujours en vie—votre famille pourrait accéder à tout prématurément.
+
+Afterglow résout ces problèmes en combinant des déclencheurs automatisés, la sécurité cryptographique et des garanties physiques.
+
+## Conclusion
+
+La planification de l'héritage numérique ne concerne pas la mort ; il s'agit du contrôle sur le travail de votre vie. L'architecture zero-knowledge d'Afterglow garantit que votre héritage numérique reste privé, sécurisé et accessible uniquement quand et comme vous l'entendez.
+
+Commencez à construire votre premier coffre-fort chiffré sur [Afterglow](https://www.digitalheirloom.app) dès aujourd'hui.
+
+---
+
+**Des Questions ?** Contactez-nous à **support@digitalheirloom.app**

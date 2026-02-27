@@ -1,0 +1,70 @@
+{
+  "metadata": {
+    "title": "À Propos - SoloBoard",
+    "description": "Découvrez la mission de SoloBoard : aider les solopreneurs à gérer efficacement plusieurs produits SaaS. Créé par des fondateurs, pour des fondateurs."
+  },
+  "hero": {
+    "title": "Conçu pour l'Armée d'Un Seul Homme",
+    "description": "SoloBoard est né d'une frustration simple : gérer plusieurs produits SaaS ne devrait pas être un travail à plein temps."
+  },
+  "story": {
+    "title": "Notre Histoire",
+    "paragraph1": "En tant que fondateurs indépendants, nous passions plus de temps à nous connecter et déconnecter de différents tableaux de bord (Stripe, PostHog, GitHub, Google Analytics) qu'à développer nos projets. Nous avons réalisé que ce dont nous avions besoin n'était pas un autre outil BI complexe pour entreprises, mais d'un simple <strong>moniteur de pouls</strong> qui montre l'essentiel en un coup d'œil.",
+    "paragraph2": "SoloBoard est notre réponse au chaos. Propulsé par des technologies robustes comme <strong>Neon</strong> et <strong>ShipAny</strong>, nous offrons aux fondateurs indépendants la clarté dont ils ont besoin pour évoluer. Nous ne sommes pas qu'un simple tableau de bord ; nous sommes votre centre de commande numérique, vous aidant à passer moins de temps à surveiller et plus de temps à construire."
+  },
+  "values": {
+    "title": "Nos Valeurs",
+    "items": [
+      {
+        "title": "Design Fondateur d'Abord",
+        "description": "Chaque fonctionnalité est conçue en pensant au flux de travail du solopreneur. Pas de superflu, pas de complexité—juste ce dont vous avez besoin."
+      },
+      {
+        "title": "Transparence",
+        "description": "Nous construisons en public. Suivez notre parcours sur Twitter/X et voyez comment nous nous améliorons constamment grâce aux retours réels des utilisateurs."
+      },
+      {
+        "title": "Sécurité par Défaut",
+        "description": "La sécurité de vos données n'est pas une réflexion après coup—c'est notre fondation. Le cryptage AES-256 et l'accès en lecture seule garantissent la sécurité de votre entreprise."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Construit sur des Fondations Solides",
+    "items": [
+      {
+        "name": "Next.js 16",
+        "description": "Performance ultra-rapide"
+      },
+      {
+        "name": "Neon PostgreSQL",
+        "description": "Base de données serverless"
+      },
+      {
+        "name": "Framework ShipAny",
+        "description": "Développement rapide"
+      },
+      {
+        "name": "Vercel",
+        "description": "Réseau edge mondial"
+      }
+    ]
+  },
+  "cta": {
+    "title": "Rejoignez l'Aventure",
+    "description": "Suivez notre parcours de construction publique et faites partie de la communauté qui façonne l'avenir de SoloBoard.",
+    "buttons": {
+      "twitter": "Suivre sur Twitter",
+      "signup": "Commencer Gratuitement"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+

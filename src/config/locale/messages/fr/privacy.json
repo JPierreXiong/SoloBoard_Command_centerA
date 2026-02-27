@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Politique de Confidentialité - SoloBoard",
+    "description": "Découvrez comment SoloBoard protège votre vie privée et gère vos données avec le cryptage AES-256 et des pratiques transparentes."
+  },
+  "last_updated": "Dernière mise à jour : 12 février 2026",
+  "introduction": {
+    "title": "Introduction",
+    "content": "Chez SoloBoard, nous respectons votre vie privée et nous nous engageons à protéger vos données personnelles. Cette politique de confidentialité explique comment nous traitons vos informations lorsque vous utilisez SoloBoard Command Center."
+  },
+  "data_collection": {
+    "title": "Données que Nous Collectons",
+    "items": [
+      {
+        "subtitle": "Informations de Compte",
+        "content": "Lorsque vous vous inscrivez, nous collectons votre adresse e-mail et votre nom (généralement via OAuth Google ou GitHub) pour gérer votre compte."
+      },
+      {
+        "subtitle": "Métriques Intégrées",
+        "content": "Pour fournir nos services de tableau de bord, nous accédons aux données des plateformes tierces (Stripe, GitHub, GA4, etc.) via les clés API que vous fournissez."
+      },
+      {
+        "subtitle": "Données d'Utilisation",
+        "content": "Nous collectons des données techniques anonymes (par exemple, type de navigateur, fuseau horaire) pour optimiser les performances."
+      }
+    ]
+  },
+  "data_usage": {
+    "title": "Comment Nous Utilisons Vos Données",
+    "items": [
+      {
+        "subtitle": "Visualisation Uniquement",
+        "content": "Nous agrégeons et affichons vos métriques commerciales pour votre consultation privée."
+      },
+      {
+        "subtitle": "Sécurité",
+        "content": "Nous utilisons le cryptage AES-256 pour sécuriser vos clés API."
+      },
+      {
+        "subtitle": "Aucune Vente",
+        "content": "Nous ne vendons, ne louons ni n'échangeons jamais vos données à des tiers."
+      }
+    ]
+  },
+  "data_retention": {
+    "title": "Conservation des Données",
+    "content": "Nous conservons vos informations uniquement tant que votre compte est actif. Une fois que vous supprimez une intégration ou votre compte, toutes les clés API associées et les données en cache sont définitivement purgées de nos serveurs."
+  },
+  "compliance": {
+    "title": "Conformité RGPD et CCPA",
+    "content": "Nous nous efforçons de respecter les normes mondiales de confidentialité. Vous avez le droit d'accéder, de corriger ou de supprimer vos données à tout moment via les paramètres de votre tableau de bord."
+  },
+  "transparency_note": {
+    "content": "Des questions sur nos pratiques de confidentialité ? Nous croyons en la transparence. Envoyez un message privé à notre fondateur sur X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+

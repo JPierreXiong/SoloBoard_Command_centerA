@@ -1,0 +1,97 @@
+{
+  "page": {
+    "title": "Ajouter un site de surveillance",
+    "description": "Choisissez une plateforme pour commencer à surveiller vos métriques commerciales"
+  },
+  "steps": {
+    "select_platform": "Sélectionner la plateforme",
+    "configure": "Configurer",
+    "confirm": "Confirmer"
+  },
+  "platforms": {
+    "uptime": {
+      "name": "Surveillance Uptime",
+      "description": "Surveillance de l'état en ligne du site web",
+      "features": {
+        "status": "État en ligne du site web",
+        "response": "Surveillance du temps de réponse",
+        "ssl": "Vérification du certificat SSL",
+        "seo": "Analyse du score SEO",
+        "tech": "Détection de la pile technologique",
+        "performance": "Surveillance des performances"
+      }
+    },
+    "ga4": {
+      "name": "Google Analytics",
+      "description": "Analyse du trafic du site web",
+      "features": {
+        "realtime": "Utilisateurs actifs en temps réel",
+        "visits": "Statistiques de visites quotidiennes",
+        "pageviews": "Nombre de pages vues",
+        "sessions": "Suivi des sessions",
+        "sources": "Analyse des sources d'utilisateurs",
+        "conversion": "Surveillance du taux de conversion"
+      }
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Suivi des paiements et des revenus",
+      "features": {
+        "today": "Statistiques de revenus d'aujourd'hui",
+        "monthly": "Statistiques de revenus mensuels",
+        "transactions": "Suivi du nombre de transactions",
+        "pending": "Montant en attente",
+        "currency": "Support multi-devises",
+        "trends": "Graphique de tendance des revenus"
+      }
+    },
+    "lemon": {
+      "name": "Lemon Squeezy",
+      "description": "Ventes de produits numériques",
+      "features": {
+        "sales": "Suivi des ventes",
+        "revenue": "Statistiques de revenus",
+        "orders": "Gestion des commandes",
+        "customers": "Analyse des clients",
+        "products": "Performance des produits",
+        "subscriptions": "Suivi des abonnements"
+      }
+    },
+    "shopify": {
+      "name": "Shopify",
+      "description": "Plateforme e-commerce",
+      "features": {
+        "orders": "Suivi des commandes",
+        "revenue": "Statistiques de revenus",
+        "products": "Gestion des produits",
+        "customers": "Données clients",
+        "inventory": "Surveillance des stocks",
+        "analytics": "Analyses de la boutique"
+      }
+    }
+  },
+  "actions": {
+    "next": "Suivant",
+    "back": "Retour",
+    "cancel": "Annuler",
+    "add": "Ajouter un site",
+    "close": "Fermer"
+  },
+  "difficulty": {
+    "easy": "Facile",
+    "medium": "Moyen",
+    "hard": "Avancé"
+  },
+  "labels": {
+    "free": "Gratuit",
+    "setup_time": "Temps de configuration",
+    "more_features": "+{count} fonctionnalités supplémentaires"
+  }
+}
+
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+{
+  "metadata": {
+    "title": "Conditions d'Utilisation - SoloBoard",
+    "description": "Lisez les Conditions d'Utilisation de SoloBoard couvrant la sécurité des comptes, l'utilisation des API, les abonnements et la portée du service."
+  },
+  "last_updated": "Dernière mise à jour : 12 février 2026",
+  "sections": [
+    {
+      "number": "1",
+      "title": "Acceptation des Conditions",
+      "content": "En accédant à SoloBoard Command Center, vous acceptez ces Conditions. SoloBoard est un produit de SoloBoard (\"nous\", \"notre\")."
+    },
+    {
+      "number": "2",
+      "title": "Portée du Service",
+      "content": "SoloBoard fournit un outil de visualisation. Nous ne possédons pas vos données ; nous fournissons simplement l'interface pour surveiller vos métriques provenant de fournisseurs tiers (Stripe, GitHub, etc.)."
+    },
+    {
+      "number": "3",
+      "title": "Sécurité du Compte",
+      "items": [
+        {
+          "subtitle": "Clés API",
+          "content": "Vous êtes responsable de la sécurité de vos clés API."
+        },
+        {
+          "subtitle": "Accès en Lecture Seule",
+          "content": "Nous recommandons fortement de fournir des permissions en lecture seule pour toutes les intégrations tierces afin de minimiser les risques."
+        },
+        {
+          "subtitle": "Cryptage",
+          "content": "Nous sécurisons vos données en utilisant le cryptage AES-256 standard de l'industrie."
+        }
+      ]
+    },
+    {
+      "number": "4",
+      "title": "Abonnement et Paiements",
+      "items": [
+        {
+          "subtitle": "Facturation",
+          "content": "Les abonnements sont facturés à l'avance selon le plan sélectionné (Starter, Base ou Pro)."
+        },
+        {
+          "subtitle": "Annulations",
+          "content": "Vous pouvez annuler à tout moment. Votre accès restera actif jusqu'à la fin du cycle de facturation en cours."
+        },
+        {
+          "subtitle": "Remboursements",
+          "content": "Les remboursements sont traités au cas par cas dans les 14 jours suivant l'achat."
+        }
+      ]
+    },
+    {
+      "number": "5",
+      "title": "Utilisation Interdite",
+      "content": "Vous acceptez de ne pas utiliser SoloBoard pour des activités illégales ou pour tenter de violer notre infrastructure de sécurité."
+    }
+  ],
+  "transparency_note": {
+    "content": "Des questions sur nos conditions légales ? Nous croyons en la transparence. Envoyez un message privé à notre fondateur sur X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+

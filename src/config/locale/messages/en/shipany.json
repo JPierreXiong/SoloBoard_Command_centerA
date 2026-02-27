@@ -1,0 +1,151 @@
+{
+  "page": {
+    "title": "Which website do you want to monitor?",
+    "description": "Track revenue, traffic, and uptime in one place"
+  },
+  "setup_time": "Takes less than 2 minutes",
+  "verified": "Verified",
+  "step1": {
+    "title": "Which website do you want to monitor?",
+    "description": "Enter your website URL and we'll start watching it for you",
+    "url_placeholder": "https://your-brilliant-startup.com",
+    "site_name_label": "Give it a name (optional)",
+    "site_name_placeholder": "My Awesome Site",
+    "checking": "Checking...",
+    "we_will_monitor": "We'll keep an eye on:",
+    "monitor_revenue": "💰 Money coming in",
+    "monitor_traffic": "👀 People visiting",
+    "monitor_uptime": "🟢 Is your site up?"
+  },
+  "step2": {
+    "title": "How does this site make money?",
+    "description": "Select where you receive payments. We only need read-only access.",
+    "security_title": "🔒 We only read data, never touch your money",
+    "security_description": "Your keys are encrypted and stored securely",
+    "how_to_get_key": "How to get this",
+    "no_revenue": "No payments yet (just watch uptime)",
+    "other_platform_placeholder": "e.g., PayPal, Alipay, WeChat Pay",
+    "other_platform_name": "Platform name",
+    "stripe_label": "Stripe",
+    "stripe_description": "Credit card payments",
+    "creem_label": "Creem",
+    "creem_description": "Subscriptions & recurring revenue",
+    "shopify_label": "Shopify",
+    "shopify_description": "E-commerce store",
+    "lemon_label": "Lemon Squeezy",
+    "lemon_description": "Digital products"
+  },
+  "step3": {
+    "title": "Want to track visitors?",
+    "description": "Connect Google Analytics to see how many people visit your site",
+    "enable_ga4": "✅ Yes, show me visitor numbers",
+    "skip": "⏭️ No thanks, just revenue and uptime",
+    "ga4_property_label": "GA4 Property ID",
+    "ga4_property_placeholder": "123456789",
+    "submitting": "Setting up...",
+    "complete": "Start Monitoring!"
+  },
+  "step4": {
+    "title": "🎉 Your website is now being monitored!",
+    "subtitle": "We'll automatically track everything for you",
+    "monitoring": "Monitoring active",
+    "we_will": "We will automatically:",
+    "monitor_uptime": "✓ Check if your site is online",
+    "monitor_revenue": "✓ Count today's revenue",
+    "monitor_traffic": "✓ Count today's visitors",
+    "alert_issues": "✓ Alert you if something goes wrong",
+    "view_dashboard": "View Dashboard"
+  },
+  "actions": {
+    "next": "Next: How do you get paid? →",
+    "next_traffic": "Next: Track visitors? →",
+    "back": "← Back",
+    "cancel": "Cancel",
+    "add": "Add Site",
+    "close": "Close"
+  },
+  "platforms": {
+    "uptime": {
+      "name": "Website Monitoring",
+      "description": "Zero setup - just enter your URL",
+      "features": {
+        "status": "Is your site online?",
+        "response": "How fast does it load?",
+        "ssl": "Is your security certificate valid?",
+        "seo": "SEO health check",
+        "tech": "What tech you're using",
+        "performance": "Performance score"
+      }
+    },
+    "ga4": {
+      "name": "Google Analytics",
+      "description": "See who's visiting your site",
+      "features": {
+        "realtime": "People on your site right now",
+        "visits": "Daily visitor count",
+        "pageviews": "Page views today",
+        "sessions": "Browsing sessions",
+        "sources": "Where visitors come from",
+        "conversion": "Conversion tracking"
+      }
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Track credit card payments",
+      "features": {
+        "today": "Today's revenue",
+        "monthly": "This month's revenue",
+        "transactions": "Number of sales",
+        "pending": "Money on the way",
+        "currency": "Multiple currencies",
+        "trends": "Revenue trends"
+      }
+    },
+    "creem": {
+      "name": "Creem",
+      "description": "Track subscriptions and recurring revenue",
+      "features": {
+        "mrr": "Monthly recurring revenue",
+        "active": "Active subscribers",
+        "new": "New subscribers",
+        "churn": "Cancellation rate",
+        "lifecycle": "Subscriber lifetime",
+        "forecast": "Revenue forecast"
+      }
+    },
+    "lemon": {
+      "name": "Lemon Squeezy",
+      "description": "Digital product sales",
+      "features": {
+        "sales": "Sales tracking",
+        "revenue": "Revenue stats",
+        "orders": "Order management",
+        "customers": "Customer data",
+        "products": "Product performance",
+        "subscriptions": "Subscription tracking"
+      }
+    },
+    "shopify": {
+      "name": "Shopify",
+      "description": "E-commerce store",
+      "features": {
+        "orders": "Order tracking",
+        "revenue": "Revenue stats",
+        "products": "Product management",
+        "customers": "Customer data",
+        "inventory": "Stock levels",
+        "analytics": "Store analytics"
+      }
+    }
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Advanced"
+  },
+  "labels": {
+    "free": "Free",
+    "setup_time": "Setup time",
+    "more_features": "+{count} more features"
+  }
+}

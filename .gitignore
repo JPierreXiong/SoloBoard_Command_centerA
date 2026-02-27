@@ -1,0 +1,129 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env
+.env.local
+.env.local.*
+.env.*.backup
+.env.development
+.env.test
+.env.production
+
+# Sensitive configuration files
+SUPABASE_*.md
+*_ENV_*.md
+env.*.txt
+!env.example.txt
+!.env.example
+!.env.payment.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+data*
+*debug*
+
+*.db
+
+.open-next
+wrangler.toml
+.wrangler
+src/shared/types/cloudflare.d.ts
+
+src/config/db/migrations
+
+.debug 
+.test
+
+*.sql
+.source
+
+.chats
+
+# 排除测试文档和方案文档
+*TEST*.md
+*TESTING*.md
+*PLAN*.md
+*SUMMARY*.md
+*COMPLETED*.md
+*FIX*.md
+*ERROR*.md
+*DIAGNOSIS*.md
+*AUDIT*.md
+*REPORT*.md
+*GUIDE*.md
+*CHECKLIST*.md
+*STATUS*.md
+*IMPLEMENTATION*.md
+*MIGRATION*.md
+*OPTIMIZATION*.md
+*VERIFICATION*.md
+*ASSESSMENT*.md
+*ANALYSIS*.md
+*RESULTS*.md
+*INSTRUCTIONS*.md
+*CONFIGURATION*.md
+*SETUP*.md
+*UPDATE*.md
+*FEATURES*.md
+*ARCHITECTURE*.md
+*DELIVERY*.md
+*SPRINT*.md
+*PHASE*.md
+*WORK*.md
+*OPTIMIZATION*.md
+*COMPLIANCE*.md
+*TECHNICAL*.md
+*SEO*.md
+*CACHE*.md
+*RBAC*.md
+*README-MIGRATION*.md
+*TEST_SCRIPTS*.md
+*COMPLETE_FLOW*.md
+*test-shipping-workflow.md
+*quick-deploy-guide.md
+*RBAC_SETUP_GUIDE.md
+*COMPLETE_FLOW_TEST_GUIDE.md
+*TEST_SCRIPTS_README.md
+*README-MIGRATION-ORDER.md
+*RBAC_SETUP_GUIDE.md
+*test-shipping-workflow.md
+*quick-deploy-guide.md
+docs/*.md
+scripts/*.md
+supabase/functions/*/README.md
+.vercel

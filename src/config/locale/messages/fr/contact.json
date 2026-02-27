@@ -1,0 +1,55 @@
+{
+  "metadata": {
+    "title": "Contactez-nous - SoloBoard",
+    "description": "Entrez en contact avec l'équipe SoloBoard. Nous sommes là pour vous aider avec le support, les partenariats et les demandes de fonctionnalités."
+  },
+  "hero": {
+    "title": "Discutons Affaires",
+    "description": "Une demande de fonctionnalité, un bug à signaler, ou simplement envie de discuter de la vie de solopreneur ? Nous sommes toujours à l'écoute."
+  },
+  "channels": {
+    "items": [
+      {
+        "title": "Support Direct",
+        "description": "Temps de réponse : Généralement sous 12 heures",
+        "email": "support@soloboard.app"
+      },
+      {
+        "title": "Construction Publique",
+        "description": "Suivez notre parcours et recevez des mises à jour en temps réel",
+        "url": "https://twitter.com/SoloBoardApp",
+        "handle": "@SoloBoardApp"
+      },
+      {
+        "title": "Partenariats",
+        "description": "Pour les collaborations ou demandes d'agence",
+        "email": "partners@soloboard.app"
+      }
+    ]
+  },
+  "location": {
+    "text": "Basé dans le cloud, au service des fondateurs du monde entier 🌍"
+  },
+  "response_times": {
+    "title": "Temps de Réponse",
+    "items": [
+      {
+        "title": "Demandes de Support",
+        "time": "Généralement sous 12 heures"
+      },
+      {
+        "title": "Demandes de Partenariat",
+        "time": "Sous 2 jours ouvrables"
+      }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+

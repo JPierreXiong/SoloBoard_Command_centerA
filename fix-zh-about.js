@@ -1,0 +1,77 @@
+const fs = require('fs');
+const path = require('path');
+
+const zhAbout = {
+  "metadata": {
+    "title": "关于我们 - SoloBoard",
+    "description": "了解 SoloBoard 的使命：帮助独立创业者高效管理多个 SaaS 产品。由创始人打造，为创始人服务。"
+  },
+  "hero": {
+    "title": "为一人军队打造",
+    "description": "SoloBoard 诞生于一个简单的烦恼：管理多个 SaaS 产品不该是一项全职工作。"
+  },
+  "story": {
+    "title": "我们的故事",
+    "paragraph1": "作为独立创始人，我们发现自己花费在不同仪表盘（Stripe、PostHog、GitHub、Google Analytics）之间反复登录的时间，竟然比实际构建业务的时间还要多。我们意识到，我们需要的不是又一个复杂的企业级 BI 工具，而是一个能一眼看清所有核心指标的脉搏监测器。",
+    "paragraph2": "SoloBoard 是我们对混乱的回答。基于 Neon 和 ShipAny 等强大技术构建，我们为独立创始人提供扩展所需的清晰度。我们不仅仅是一个仪表盘；我们是您的数字指挥中心，帮助您减少监控时间，增加构建时间。"
+  },
+  "values": {
+    "title": "我们的价值观",
+    "items": [
+      {
+        "title": "创始人优先设计",
+        "description": "每个功能都以独立创业者的工作流程为核心设计。没有冗余，没有复杂性——只有您需要的。"
+      },
+      {
+        "title": "透明成长",
+        "description": "我们公开构建。在 Twitter/X 上关注我们的旅程，看看我们如何根据真实用户反馈不断改进。"
+      },
+      {
+        "title": "默认安全",
+        "description": "您的数据安全不是事后考虑——它是我们的基础。AES-256 加密和只读访问确保您的业务安全。"
+      }
+    ]
+  },
+  "tech": {
+    "title": "构建于坚实基础之上",
+    "items": [
+      {
+        "name": "Next.js 16",
+        "description": "闪电般的性能"
+      },
+      {
+        "name": "Neon PostgreSQL",
+        "description": "无服务器数据库"
+      },
+      {
+        "name": "ShipAny 框架",
+        "description": "快速开发"
+      },
+      {
+        "name": "Vercel",
+        "description": "全球边缘网络"
+      }
+    ]
+  },
+  "cta": {
+    "title": "加入旅程",
+    "description": "关注我们的公开构建旅程，成为塑造 SoloBoard 未来的社区一员。",
+    "buttons": {
+      "twitter": "在 Twitter 上关注",
+      "signup": "免费开始"
+    }
+  }
+};
+
+const filePath = path.join('D:', 'AIsoftware', 'soloboard', 'src', 'config', 'locale', 'messages', 'zh', 'about.json');
+fs.writeFileSync(filePath, JSON.stringify(zhAbout, null, 2), 'utf8');
+console.log('zh/about.json created successfully');
+
+
+
+
+
+
+
+
+

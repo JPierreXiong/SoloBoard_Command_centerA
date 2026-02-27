@@ -1,0 +1,13 @@
+# ads.txt for soloboard.app
+# This file is used to declare authorized digital sellers
+# Add your ad network relationships here when needed
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,312 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "SoloBoard",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Dashboard",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Pricing",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Dashboard",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Billing",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Activity",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Monitor All Your Sites in One Dashboard",
+    "highlight_text": "",
+    "description": "Stop switching between tabs. Track GA4 analytics, payment revenue (Stripe, Creem, Alipay, PayPal), and uptime status for up to 10 websites in a single, beautiful dashboard. Built for solo entrepreneurs.",
+    "announcement": {
+      "badge": "Productivity",
+      "title": "⚡ Save 2 Hours Daily",
+      "url": "#how-it-works"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required</span>",
+    "buttons": [
+      {
+        "title": "Start for Free",
+        "icon": "LayoutDashboard",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "View Demo",
+        "icon": "Play",
+        "url": "/soloboard",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false,
+    "image": {
+      "src": "/imgs/features/admin.png",
+      "alt": "SoloBoard Dashboard"
+    },
+    "image_invert": {
+      "src": "/imgs/features/admin-dark.png",
+      "alt": "SoloBoard Dashboard"
+    }
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "How It Works",
+    "description": "One dashboard to rule them all",
+    "items": [
+      {
+        "title": "Connect Your Sites",
+        "description": "Add your websites and connect GA4, Stripe, and uptime monitoring with secure API keys.",
+        "icon": "Link"
+      },
+      {
+        "title": "Real-Time Sync",
+        "description": "Data syncs automatically every 15 minutes. See today's visitors, revenue, and uptime at a glance.",
+        "icon": "RefreshCw"
+      },
+      {
+        "title": "Stay Focused",
+        "description": "No more context switching. Monitor all your projects from one beautiful 3x3 grid dashboard.",
+        "icon": "Target"
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Key Features",
+    "description": "Everything you need to monitor your online empire",
+    "items": [
+      {
+        "title": "GA4 Analytics",
+        "description": "Track visitors, page views, and user behavior across all your sites in real-time.",
+        "icon": "BarChart3"
+      },
+      {
+        "title": "Payment Revenue",
+        "description": "Monitor today's sales, MRR, and transaction counts from Stripe, Creem, Alipay, PayPal without opening multiple dashboards.",
+        "icon": "DollarSign"
+      },
+      {
+        "title": "Uptime Monitoring",
+        "description": "Get instant alerts when your sites go down. Track response times and availability.",
+        "icon": "Activity"
+      },
+      {
+        "title": "9-Grid Layout",
+        "description": "Beautiful 3x3 dashboard layout. Drag and drop to reorder your sites by priority.",
+        "icon": "LayoutGrid"
+      },
+      {
+        "title": "Historical Data",
+        "description": "View trends and compare performance over time with interactive charts.",
+        "icon": "TrendingUp"
+      },
+      {
+        "title": "Secure & Private",
+        "description": "Your API keys are encrypted with AES-256. We never see your actual data.",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Frequently Asked Questions",
+    "description": "Have another question? Contact us by email.",
+    "tip": "Can't find what you're looking for? Contact our <a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>customer support team</a>",
+    "items": [
+      {
+        "question": "How many sites can I monitor?",
+        "answer": "Free plan: 3 sites. Base plan ($19.9/mo): 5 sites. Pro plan ($39.9/mo): 10 sites. Perfect for solo entrepreneurs managing multiple projects."
+      },
+      {
+        "question": "Which platforms do you support?",
+        "answer": "Currently: Google Analytics 4, Stripe, and Uptime monitoring. We're adding Lemon Squeezy, Shopify, and Cloudflare Analytics soon."
+      },
+      {
+        "question": "How often does data sync?",
+        "answer": "Free: Every 48 hours. Base: Every 6 hours. Pro: Every 60 minutes. All plans show real-time data once synced."
+      },
+      {
+        "question": "Is my data secure?",
+        "answer": "Yes! Your API keys are encrypted with AES-256-CBC before storage. We use industry-standard security practices and never access your actual data."
+      },
+      {
+        "question": "Can I export my data?",
+        "answer": "Yes! Pro plan includes CSV and Excel export. Perfect for monthly reports or sharing with clients."
+      },
+      {
+        "question": "Do you offer refunds?",
+        "answer": "Yes! We offer a 14-day money-back guarantee. If you're not satisfied, we'll refund your payment, no questions asked."
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Start Monitoring Your Sites Today",
+    "description": "Join solo entrepreneurs who saved hours by consolidating their dashboards.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">No credit card required • Free plan available</span>",
+    "buttons": [
+      {
+        "title": "Get Started Free",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "Subscribe to our newsletter",
+    "description": "Get productivity tips and product updates from SoloBoard.",
+    "submit": {
+      "input": {
+        "placeholder": "Enter your email"
+      },
+      "button": {
+        "title": "Subscribe"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "SoloBoard",
+      "description": "SoloBoard is a unified monitoring dashboard for solo entrepreneurs. Track GA4 analytics, Stripe revenue, and uptime status for all your websites in one beautiful interface.",
+      "url": "/"
+    },
+    "copyright": "SoloBoard - Monitor All Your Sites in One Place",
+    "nav": {
+      "items": [
+        {
+          "title": "Product",
+          "children": [
+            {
+              "title": "Dashboard",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "Pricing",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "FAQ",
+              "url": "/#faq",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Company",
+          "children": [
+            {
+              "title": "About Us",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "Contact Us",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/blog",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Partners",
+          "children": [
+            {
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
+            },
+            {
+              "title": "Vercel",
+              "url": "https://vercel.com",
+              "target": "_blank"
+            },
+            {
+              "title": "Neon",
+              "url": "https://neon.tech",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "Email",
+          "icon": "Mail",
+          "url": "mailto:support@soloboard.app",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Privacy Policy",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Terms of Service",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "Disclaimer",
+          "url": "/disclaimer"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

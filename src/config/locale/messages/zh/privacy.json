@@ -1,0 +1,66 @@
+{
+  "metadata": {
+    "title": "Privacy Policy - SoloBoard",
+    "description": "Learn how SoloBoard protects your privacy and handles your data with AES-256 encryption and transparent practices."
+  },
+  "last_updated": "Last Updated: February 12, 2026",
+  "introduction": {
+    "title": "Introduction",
+    "content": "At SoloBoard, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we handle your information when you use SoloBoard Command Center."
+  },
+  "data_collection": {
+    "title": "Data We Collect",
+    "items": [
+      {
+        "subtitle": "Account Information",
+        "content": "When you sign up, we collect your email address and name (usually via Google or GitHub OAuth) to manage your account."
+      },
+      {
+        "subtitle": "Integrated Metrics",
+        "content": "To provide our dashboard services, we access data from third-party platforms (Stripe, GitHub, GA4, etc.) via API keys you provide."
+      },
+      {
+        "subtitle": "Usage Data",
+        "content": "We collect anonymous technical data (e.g., browser type, time zone) to optimize performance."
+      }
+    ]
+  },
+  "data_usage": {
+    "title": "How We Use Your Data",
+    "items": [
+      {
+        "subtitle": "Visualization Only",
+        "content": "We aggregate and display your business metrics for your private viewing."
+      },
+      {
+        "subtitle": "Security",
+        "content": "We use AES-256 encryption to secure your API keys."
+      },
+      {
+        "subtitle": "No Selling",
+        "content": "We never sell, rent, or trade your data to third parties."
+      }
+    ]
+  },
+  "data_retention": {
+    "title": "Data Retention",
+    "content": "We retain your information only as long as your account is active. Once you delete an integration or your account, all associated API keys and cached data are permanently purged from our servers."
+  },
+  "compliance": {
+    "title": "GDPR & CCPA Compliance",
+    "content": "We strive to comply with global privacy standards. You have the right to access, correct, or delete your data at any time through your dashboard settings."
+  },
+  "transparency_note": {
+    "content": "Have questions about our privacy practices? We believe in transparency. Send a DM to our founder on X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+
