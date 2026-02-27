@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>手动修复支付</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 手动修复支付</h1>
+    <p>邮箱: <strong>xiongjp_fr@hotmail.com</strong></p>
+    <p>金额: <strong>$19.90</strong></p>
+    
+    <button onclick="fixPayment()">立即修复支付</button>
+    
+    <div id="result" class="result"></div>
+
+    <script>
+        async function fixPayment() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result';
+            resultDiv.innerHTML = '<p>正在修复...</p>';
+            
+            try {
+                // 调用修复 API
+                const response = await fetch('https://soloboard-command-center-b.vercel.app/api/admin/trigger-webhook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        orderNo: '795019385921541470', // 从诊断工具看到的订单号
+                    }),
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `
+                        <h3>✅ 修复成功！</h3>
+                        <p><strong>订单:</strong> ${data.order.orderNo}</p>
+                        <p><strong>订阅:</strong> ${data.subscription.subscriptionNo}</p>
+                        <p><strong>计划:</strong> ${data.subscription.planName}</p>
+                        <p><strong>状态:</strong> ${data.subscription.status}</p>
+                        <p><strong>周期结束:</strong> ${new Date(data.subscription.currentPeriodEnd).toLocaleDateString()}</p>
+                        <hr>
+                        <p><strong>下一步:</strong></p>
+                        <ol>
+                            <li>刷新 billing 页面</li>
+                            <li>您应该能看到 "Base Plan"</li>
+                            <li>可以开始添加站点了</li>
+                        </ol>
+                        <a href="https://soloboard-command-center-b.vercel.app/settings/billing" target="_blank">
+                            <button>查看 Billing 页面</button>
+                        </a>
+                    `;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `
+                        <h3>❌ 修复失败</h3>
+                        <p>${data.error || data.message}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <h3>❌ 错误</h3>
+                    <p>${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
+

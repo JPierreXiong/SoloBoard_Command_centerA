@@ -1,0 +1,318 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "SoloBoard",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "仪表盘",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "定价",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "仪表盘",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "账单",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "活动",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "一屏监控所有网站",
+    "highlight_text": "",
+    "description": "不再频繁切换标签页。在一个漂亮的仪表盘中追踪最多 10 个网站的 GA4 分析、支付收入（Stripe、Creem、支付宝、PayPal）和在线状态。专为独立创业者打造。",
+    "announcement": {
+      "badge": "效率",
+      "title": "⚡ 每天节省 2 小时",
+      "url": "#how-it-works"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">无需信用卡</span>",
+    "buttons": [
+      {
+        "title": "免费开始",
+        "icon": "LayoutDashboard",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "查看演示",
+        "icon": "Play",
+        "url": "/soloboard",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "工作原理",
+    "description": "一个仪表盘统治一切",
+    "items": [
+      {
+        "title": "连接网站",
+        "description": "添加您的网站，使用安全的 API 密钥连接 GA4、Stripe 和在线监控。",
+        "icon": "Link"
+      },
+      {
+        "title": "实时同步",
+        "description": "数据每 15 分钟自动同步。一目了然地查看今日访客、收入和在线状态。",
+        "icon": "RefreshCw"
+      },
+      {
+        "title": "保持专注",
+        "description": "不再需要上下文切换。从一个漂亮的 3x3 网格仪表盘监控所有项目。",
+        "icon": "Target"
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "核心功能",
+    "description": "监控您的在线帝国所需的一切",
+    "items": [
+      {
+        "title": "GA4 分析",
+        "description": "实时追踪所有网站的访客、页面浏览量和用户行为。",
+        "icon": "BarChart3"
+      },
+      {
+        "title": "支付收入",
+        "description": "无需打开多个仪表盘即可监控来自 Stripe、Creem、支付宝、PayPal 的今日销售、MRR 和交易数量。",
+        "icon": "DollarSign"
+      },
+      {
+        "title": "在线监控",
+        "description": "网站宕机时立即收到警报。追踪响应时间和可用性。",
+        "icon": "Activity"
+      },
+      {
+        "title": "九宫格布局",
+        "description": "漂亮的 3x3 仪表盘布局。拖放重新排序您的网站优先级。",
+        "icon": "LayoutGrid"
+      },
+      {
+        "title": "历史数据",
+        "description": "通过交互式图表查看趋势并比较随时间的性能。",
+        "icon": "TrendingUp"
+      },
+      {
+        "title": "安全私密",
+        "description": "您的 API 密钥使用 AES-256 加密。我们永远看不到您的实际数据。",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "常见问题",
+    "description": "还有其他问题？通过邮件联系我们。",
+    "tip": "找不到您要找的内容？联系我们的<a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>客户支持团队</a>",
+    "items": [
+      {
+        "question": "我可以监控多少个网站？",
+        "answer": "免费计划：3 个网站。基础计划（$19.9/月）：5 个网站。专业计划（$39.9/月）：10 个网站。非常适合管理多个项目的独立创业者。"
+      },
+      {
+        "question": "支持哪些平台？",
+        "answer": "目前支持：Google Analytics 4、Stripe 和在线监控。我们即将添加 Lemon Squeezy、Shopify 和 Cloudflare Analytics。"
+      },
+      {
+        "question": "数据多久同步一次？",
+        "answer": "免费：每 48 小时。基础：每 6 小时。专业：每 60 分钟。所有计划在同步后显示实时数据。"
+      },
+      {
+        "question": "我的数据安全吗？",
+        "answer": "是的！您的 API 密钥在存储前使用 AES-256-CBC 加密。我们使用行业标准的安全实践，永远不会访问您的实际数据。"
+      },
+      {
+        "question": "可以导出数据吗？",
+        "answer": "可以！专业计划包含 CSV 和 Excel 导出。非常适合月度报告或与客户分享。"
+      },
+      {
+        "question": "提供退款吗？",
+        "answer": "是的！我们提供 14 天退款保证。如果您不满意，我们将退还您的付款，无需任何理由。"
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "立即开始监控您的网站",
+    "description": "加入通过整合仪表盘节省数小时的独立创业者行列。",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">无需信用卡 • 提供免费计划</span>",
+    "buttons": [
+      {
+        "title": "免费开始",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "订阅我们的新闻通讯",
+    "description": "获取 SoloBoard 的生产力技巧和产品更新。",
+    "submit": {
+      "input": {
+        "placeholder": "输入您的邮箱"
+      },
+      "button": {
+        "title": "订阅"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "订阅我们的新闻通讯",
+    "description": "获取 SoloBoard 的生产力技巧和产品更新。",
+    "submit": {
+      "input": {
+        "placeholder": "输入您的邮箱"
+      },
+      "button": {
+        "title": "订阅"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "SoloBoard",
+      "description": "SoloBoard 是为独立创业者打造的统一监控仪表盘。在一个漂亮的界面中追踪所有网站的 GA4 分析、Stripe 收入和在线状态。",
+      "url": "/"
+    },
+    "copyright": "SoloBoard - 一屏监控所有网站",
+    "nav": {
+      "items": [
+        {
+          "title": "产品",
+          "children": [
+            {
+              "title": "仪表盘",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "定价",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "常见问题",
+              "url": "/#faq",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "公司",
+          "children": [
+            {
+              "title": "关于我们",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "联系我们",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "博客",
+              "url": "/blog",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "合作伙伴",
+          "children": [
+            {
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
+            },
+            {
+              "title": "Vercel",
+              "url": "https://vercel.com",
+              "target": "_blank"
+            },
+            {
+              "title": "Neon",
+              "url": "https://neon.tech",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "邮箱",
+          "icon": "Mail",
+          "url": "mailto:support@soloboard.app",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "隐私政策",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "服务条款",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "免责声明",
+          "url": "/disclaimer"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

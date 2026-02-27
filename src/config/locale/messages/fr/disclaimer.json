@@ -1,0 +1,43 @@
+{
+  "metadata": {
+    "title": "Avertissement - SoloBoard",
+    "description": "Lisez l'avertissement de SoloBoard concernant la disponibilité du service, l'exactitude des données et la limitation de responsabilité."
+  },
+  "last_updated": "Dernière mise à jour : 12 février 2026",
+  "sections": [
+    {
+      "title": "Service \"Tel Quel\"",
+      "content": "SoloBoard Command Center est fourni sur une base \"tel quel\" et \"selon disponibilité\". Nous ne faisons aucune garantie, expresse ou implicite, concernant l'exactitude ou la disponibilité du service."
+    },
+    {
+      "title": "Pas de Conseil Financier",
+      "content": "Les métriques, graphiques et données affichés sur SoloBoard sont à titre informatif uniquement. Ils ne constituent pas un conseil financier, d'investissement ou juridique. Vérifiez toujours les données critiques directement via la plateforme source (par exemple, votre tableau de bord Stripe)."
+    },
+    {
+      "title": "Défaillances Tierces",
+      "content": "SoloBoard s'appuie sur des API tierces. Nous ne sommes pas responsables de :",
+      "items": [
+        "Inexactitudes causées par des fournisseurs de données tiers",
+        "Temps d'arrêt temporaire des services tiers",
+        "Perte de données due aux modifications d'API par des fournisseurs comme Google ou Apple"
+      ]
+    },
+    {
+      "title": "Limitation de Responsabilité",
+      "content": "Dans toute la mesure permise par la loi, SoloBoard ne sera pas responsable des dommages indirects, accessoires ou consécutifs (y compris la perte de profits) découlant de votre utilisation du service."
+    }
+  ],
+  "transparency_note": {
+    "content": "Des questions sur notre avertissement ? Nous croyons en la transparence. Envoyez un message privé à notre fondateur sur X",
+    "link_text": "@SoloBoardApp"
+  }
+}
+
+
+
+
+
+
+
+
+

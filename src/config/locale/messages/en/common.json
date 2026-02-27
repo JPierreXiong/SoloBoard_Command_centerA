@@ -1,0 +1,181 @@
+{
+  "metadata": {
+    "title": "SoloBoard - Monitor All Your Sites in One Dashboard",
+    "description": "Track GA4 analytics, Stripe revenue, and uptime status for up to 10 websites in a single dashboard. Built for solo entrepreneurs. Save 2 hours daily.",
+    "keywords": "website monitoring, ga4 dashboard, stripe analytics, uptime monitoring, multi-site dashboard, solo entrepreneur tools, website analytics, revenue tracking, site monitoring"
+  },
+  "sign": {
+    "sign_in_title": "Sign In",
+    "sign_in_description": "Sign in to your account",
+    "sign_up_title": "Sign Up",
+    "sign_up_description": "Create an account",
+    "email_title": "Email",
+    "email_placeholder": "Input your email here",
+    "password_title": "Password",
+    "password_placeholder": "Input your password here",
+    "forgot_password": "Forgot password?",
+    "or": "Or",
+    "continue": "Continue",
+    "no_account": "Don't have an account?",
+    "already_have_account": "Already have an account?",
+    "email_sign_in": "Sign in with Email",
+    "google_sign_in_title": "Sign in with Google",
+    "github_sign_in_title": "Sign in with GitHub",
+    "close_title": "Close",
+    "cancel_title": "Cancel",
+    "sign_out_title": "Sign Out",
+    "billing_title": "Billing",
+    "name_title": "Name",
+    "name_placeholder": "Input your name here",
+    "admin_title": "Admin System",
+    "credits_title": "Credits: {credits}",
+    "email_already_registered": "This email is already registered",
+    "redirecting_to_signin": "Redirecting to sign in page...",
+    "password_requirements_error": "Password must be at least 8 characters long",
+    "email_invalid_error": "Please enter a valid email address"
+  },
+  "payment": {
+    "choose_payment_method": "Choose Payment Method",
+    "choose_payment_method_description": "",
+    "cancel_title": "Cancel"
+  },
+  "locale_detector": {
+    "title": "We detected your browser language is {locale}. Switch to it?",
+    "switch_to": "Switch to {locale}"
+  },
+  "shipany": {
+    "page": {
+      "title": "Add Website",
+      "subtitle": "Monitor your website"
+    }
+  },
+  "soloboard": {
+    "title": "SoloBoard Dashboard",
+    "description": "Monitor all your sites in one place. Track GA4 analytics, payment revenue, and uptime status.",
+    "enter_dashboard": "Enter Dashboard",
+    "view_pricing": "View Pricing",
+    "page": {
+      "title": "Monitor All Your Sites",
+      "subtitle": "Track revenue, traffic, and uptime status for all your websites in one place"
+    },
+    "refresh": "Refresh",
+    "loading": "Loading sites...",
+    "error": {
+      "title": "Failed to Load Sites",
+      "retry": "Try Again"
+    },
+    "empty_state": {
+      "title": "No websites yet",
+      "description": "Add your first website to start monitoring revenue, traffic, and uptime status.",
+      "add_button": "Add Your First Website"
+    },
+    "add_button": "Add Website",
+    "site_card": {
+      "today_revenue": "Today's Revenue",
+      "today_visitors": "Today's Visitors",
+      "status": "Status",
+      "view_details": "View Details"
+    },
+    "status": {
+      "online": "Online",
+      "offline": "Offline",
+      "warning": "Warning",
+      "checking": "Checking..."
+    },
+    "alerts": {
+      "offline": "Website is offline",
+      "no_sales": "No sales today (usually has sales)",
+      "low_traffic": "Traffic is 30% below average"
+    },
+    "summary": {
+      "total_sites": "Total Sites",
+      "total_revenue": "Total Revenue Today",
+      "total_visitors": "Total Visitors Today",
+      "sites_online": "Sites Online"
+    },
+    "site_details": {
+      "title": "Site Details",
+      "description": "View detailed metrics and history for your website",
+      "back": "Back to Dashboard",
+      "settings": "Settings",
+      "avg_revenue": "Avg Revenue (7d)",
+      "trend": "Trend",
+      "history": "History",
+      "export": "Export",
+      "date": "Date",
+      "revenue": "Revenue",
+      "visitors": "Visitors",
+      "avg_order": "Avg Order Value",
+      "platforms": "Connected Platforms"
+    },
+    "features": {
+      "ga4": {
+        "title": "GA4 Analytics",
+        "description": "Track visitors, page views, and user behavior in real-time"
+      },
+      "revenue": {
+        "title": "Payment Revenue",
+        "description": "Monitor today's sales, MRR, and transaction counts from Stripe, Creem, Alipay, PayPal"
+      },
+      "uptime": {
+        "title": "Uptime Monitoring",
+        "description": "Get instant alerts when your sites go down"
+      }
+    },
+    "upgrade_dialog": {
+      "title": "Upgrade to Add More Sites",
+      "description": "Your {plan} plan has reached the limit of {limit} sites",
+      "current_limit": "Current Limit",
+      "usage": "Used {current} / {limit} site quota",
+      "recommended": "Recommended",
+      "most_powerful": "Most Powerful",
+      "base_plan": {
+        "title": "Base Plan",
+        "description": "Perfect for small projects and indie developers",
+        "price": "$19.9",
+        "period": "/month",
+        "billing": "Billed monthly, cancel anytime",
+        "features": {
+          "sites": "Up to 5 sites",
+          "monitoring": "Real-time monitoring and alerts",
+          "email": "Email notifications",
+          "stats": "Revenue and traffic statistics",
+          "credits": "1000 credits/month",
+          "history": "7-day data history"
+        }
+      },
+      "pro_plan": {
+        "title": "Pro Plan",
+        "description": "Perfect for professionals and teams",
+        "price": "$39.9",
+        "period": "/month",
+        "billing": "Billed monthly, cancel anytime",
+        "features": {
+          "sites": "Unlimited sites",
+          "all_base": "All Base features",
+          "advanced": "Advanced analytics and reports",
+          "api": "API access",
+          "credits": "5000 credits/month",
+          "history": "90-day data history",
+          "support": "Priority support"
+        }
+      },
+      "upgrade_now": "Upgrade Now",
+      "comparison": {
+        "title": "Feature Comparison",
+        "feature": "Feature",
+        "free": "Free",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "Number of Sites",
+        "email_alerts": "Email Alerts",
+        "api_access": "API Access",
+        "data_history": "Data History",
+        "days": "days"
+      },
+      "footer": "💡 All plans support cancellation anytime, no long-term commitment required",
+      "contact": "Questions?",
+      "contact_us": "Contact Us"
+    }
+  }
+}

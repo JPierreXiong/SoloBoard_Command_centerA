@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "title": "SoloBoard - Surveillez tous vos sites sur un seul écran",
+    "description": "Suivez les analyses GA4, les revenus Stripe et la disponibilité de jusqu'à 10 sites dans un seul tableau de bord magnifique. Conçu pour les entrepreneurs solo. Économisez 2 heures par jour.",
+    "keywords": "surveillance de site web, tableau de bord ga4, analyses stripe, surveillance en ligne, tableau de bord multi-sites, outils entrepreneur solo, analyses de site web, suivi des revenus, surveillance de site"
+  },
+  "sign": {
+    "sign_in_title": "Se connecter",
+    "sign_in_description": "Connectez-vous à votre compte",
+    "sign_up_title": "S'inscrire",
+    "sign_up_description": "Créer un compte",
+    "email_title": "E-mail",
+    "email_placeholder": "Entrez votre e-mail",
+    "password_title": "Mot de passe",
+    "password_placeholder": "Entrez votre mot de passe",
+    "forgot_password": "Mot de passe oublié ?",
+    "or": "Ou",
+    "continue": "Continuer",
+    "no_account": "Vous n'avez pas de compte ?",
+    "already_have_account": "Vous avez déjà un compte ?",
+    "email_sign_in": "Se connecter avec e-mail",
+    "google_sign_in_title": "Se connecter avec Google",
+    "github_sign_in_title": "Se connecter avec GitHub",
+    "close_title": "Fermer",
+    "cancel_title": "Annuler",
+    "sign_out_title": "Se déconnecter",
+    "billing_title": "Facturation",
+    "name_title": "Nom",
+    "name_placeholder": "Entrez votre nom",
+    "admin_title": "Système d'administration",
+    "credits_title": "Crédits: {credits}",
+    "email_already_registered": "Cet e-mail est déjà enregistré",
+    "redirecting_to_signin": "Redirection vers la page de connexion...",
+    "password_requirements_error": "Le mot de passe doit contenir au moins 8 caractères",
+    "email_invalid_error": "Veuillez entrer une adresse e-mail valide"
+  },
+  "payment": {
+    "choose_payment_method": "Choisir le mode de paiement",
+    "choose_payment_method_description": "",
+    "cancel_title": "Annuler"
+  },
+  "locale_detector": {
+    "title": "Nous avons détecté que la langue de votre navigateur est {locale}. Voulez-vous changer ?",
+    "switch_to": "Passer à {locale}"
+  },
+  "soloboard": {
+    "title": "Tableau de bord SoloBoard",
+    "description": "Surveillez tous vos sites en un seul endroit. Suivez les analyses GA4, les revenus de paiement et l'état en ligne.",
+    "enter_dashboard": "Accéder au tableau de bord",
+    "view_pricing": "Voir les tarifs",
+    "page": {
+      "title": "Surveillez tous vos sites",
+      "subtitle": "Suivez les revenus, le trafic et l'état en ligne de tous vos sites web en un seul endroit"
+    },
+    "refresh": "Actualiser",
+    "loading": "Chargement...",
+    "error": {
+      "title": "Échec du chargement",
+      "retry": "Réessayer"
+    },
+    "empty_state": {
+      "title": "Aucun site web pour le moment",
+      "description": "Ajoutez votre premier site web pour commencer à surveiller les revenus, le trafic et l'état en ligne.",
+      "add_button": "Ajouter votre premier site web"
+    },
+    "add_button": "Ajouter un site",
+    "site_card": {
+      "today_revenue": "Revenus d'aujourd'hui",
+      "today_visitors": "Visiteurs d'aujourd'hui",
+      "status": "Statut",
+      "view_details": "Voir les détails"
+    },
+    "status": {
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "warning": "Avertissement",
+      "checking": "Vérification..."
+    },
+    "alerts": {
+      "offline": "Le site web est hors ligne",
+      "no_sales": "Aucune vente aujourd'hui (a généralement des ventes)",
+      "low_traffic": "Le trafic est 30% inférieur à la moyenne"
+    },
+    "summary": {
+      "total_sites": "Total des sites",
+      "total_revenue": "Revenus totaux aujourd'hui",
+      "total_visitors": "Visiteurs totaux aujourd'hui",
+      "sites_online": "Sites en ligne"
+    },
+    "site_details": {
+      "title": "Détails du site",
+      "description": "Voir les métriques détaillées et l'historique de votre site web",
+      "back": "Retour au tableau de bord",
+      "settings": "Paramètres",
+      "avg_revenue": "Revenu moyen (7j)",
+      "trend": "Tendance",
+      "history": "Historique",
+      "export": "Exporter",
+      "date": "Date",
+      "revenue": "Revenu",
+      "visitors": "Visiteurs",
+      "avg_order": "Valeur moyenne de commande",
+      "platforms": "Plateformes connectées"
+    },
+    "features": {
+      "ga4": {
+        "title": "Analyses GA4",
+        "description": "Suivez les visiteurs, les pages vues et le comportement des utilisateurs en temps réel"
+      },
+      "revenue": {
+        "title": "Revenus de paiement",
+        "description": "Surveillez les ventes du jour, le MRR et le nombre de transactions depuis Stripe, Creem, Alipay, PayPal"
+      },
+      "uptime": {
+        "title": "Surveillance de disponibilité",
+        "description": "Recevez des alertes instantanées lorsque vos sites tombent en panne"
+      }
+    },
+    "upgrade_dialog": {
+      "title": "Mettre à niveau pour ajouter plus de sites",
+      "description": "Votre plan {plan} a atteint la limite de {limit} sites",
+      "current_limit": "Limite actuelle",
+      "usage": "Utilisé {current} / {limit} quota de sites",
+      "recommended": "Recommandé",
+      "most_powerful": "Le plus puissant",
+      "base_plan": {
+        "title": "Plan Base",
+        "description": "Parfait pour les petits projets et les développeurs indépendants",
+        "price": "19,9€",
+        "period": "/mois",
+        "billing": "Facturation mensuelle, annulation à tout moment",
+        "features": {
+          "sites": "Jusqu'à 5 sites",
+          "monitoring": "Surveillance et alertes en temps réel",
+          "email": "Notifications par e-mail",
+          "stats": "Statistiques de revenus et de trafic",
+          "credits": "1000 crédits/mois",
+          "history": "Historique de 7 jours"
+        }
+      },
+      "pro_plan": {
+        "title": "Plan Pro",
+        "description": "Parfait pour les professionnels et les équipes",
+        "price": "39,9€",
+        "period": "/mois",
+        "billing": "Facturation mensuelle, annulation à tout moment",
+        "features": {
+          "sites": "Sites illimités",
+          "all_base": "Toutes les fonctionnalités Base",
+          "advanced": "Analyses et rapports avancés",
+          "api": "Accès API",
+          "credits": "5000 crédits/mois",
+          "history": "Historique de 90 jours",
+          "support": "Support prioritaire"
+        }
+      },
+      "upgrade_now": "Mettre à niveau maintenant",
+      "comparison": {
+        "title": "Comparaison des fonctionnalités",
+        "feature": "Fonctionnalité",
+        "free": "Gratuit",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "Nombre de sites",
+        "email_alerts": "Alertes par e-mail",
+        "api_access": "Accès API",
+        "data_history": "Historique des données",
+        "days": "jours"
+      },
+      "footer": "💡 Tous les plans permettent l'annulation à tout moment, sans engagement à long terme",
+      "contact": "Des questions ?",
+      "contact_us": "Contactez-nous"
+    }
+  }
+}

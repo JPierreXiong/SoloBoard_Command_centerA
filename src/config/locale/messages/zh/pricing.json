@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "title": "定价 - SoloBoard",
+    "description": "选择您的 SoloBoard 计划"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "SoloBoard 定价",
+    "title": "定价",
+    "description": "在一个仪表盘中监控所有网站。免费开始，准备好后升级。",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "月付",
+        "is_featured": true,
+        "label": "灵活"
+      }
+    ],
+    "items": [
+      {
+        "title": "免费版",
+        "description": "非常适合试用",
+        "label": "开始使用",
+        "features_title": "包含",
+        "features": [
+          "1 个项目",
+          "3 个数据源（GA4/Stripe/在线监控）",
+          "48 小时自动刷新",
+          "7 天数据缓存",
+          "基础仪表盘",
+          "社区支持"
+        ],
+        "interval": "month",
+        "amount": 0,
+        "currency": "USD",
+        "price": "$0",
+        "original_price": "",
+        "unit": "/ 永久",
+        "is_featured": false,
+        "tip": "非常适合试用服务！",
+        "button": {
+          "title": "免费开始",
+          "url": "/sign-up",
+          "icon": "LayoutDashboard"
+        },
+        "product_id": "soloboard-free",
+        "product_name": "SoloBoard 免费版",
+        "group": "monthly",
+        "plan_name": "免费版"
+      },
+      {
+        "title": "基础版",
+        "description": "适合成长中的创业者",
+        "label": "热门",
+        "features_title": "免费版的所有功能，加上",
+        "features": [
+          "5 个项目",
+          "所有数据源（+ Shopify/Lemon Squeezy）",
+          "6 小时自动刷新",
+          "1 年历史数据",
+          "高级分析",
+          "邮件警报",
+          "优先支持"
+        ],
+        "interval": "month",
+        "amount": 1990,
+        "currency": "USD",
+        "price": "$19.9",
+        "original_price": "",
+        "unit": "/ 月",
+        "is_featured": true,
+        "tip": "最适合独立创业者！",
+        "button": {
+          "title": "获取基础版",
+          "url": "/#pricing",
+          "icon": "Zap"
+        },
+        "product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "product_name": "SoloBoard 基础版",
+        "payment_product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "group": "monthly",
+        "plan_name": "基础版"
+      },
+      {
+        "title": "专业版",
+        "description": "适合高级用户",
+        "label": "高级",
+        "features_title": "基础版的所有功能，加上",
+        "features": [
+          "10 个项目",
+          "60 分钟实时同步",
+          "永久历史记录",
+          "白标和自定义域名",
+          "团队协作",
+          "API 访问",
+          "专属支持"
+        ],
+        "interval": "month",
+        "amount": 3990,
+        "currency": "USD",
+        "price": "$39.9",
+        "original_price": "",
+        "unit": "/ 月",
+        "is_featured": false,
+        "tip": "非常适合代理机构！",
+        "button": {
+          "title": "获取专业版",
+          "url": "/#pricing",
+          "icon": "Crown"
+        },
+        "product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "product_name": "SoloBoard 专业版",
+        "payment_product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "group": "monthly",
+        "plan_name": "专业版"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "当前计划",
+    "processing": "处理中"
+  }
+}
+
+
+
+
+
+
+
+
+

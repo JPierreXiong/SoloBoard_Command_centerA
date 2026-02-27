@@ -1,0 +1,175 @@
+{
+  "metadata": {
+    "title": "SoloBoard - 一屏监控所有网站",
+    "description": "在一个漂亮的仪表盘中追踪最多 10 个网站的 GA4 分析、Stripe 收入和在线状态。专为独立创业者打造。每天节省 2 小时。",
+    "keywords": "网站监控, ga4仪表盘, stripe分析, 在线监控, 多站点仪表盘, 独立创业者工具, 网站分析, 收入追踪, 站点监控"
+  },
+  "sign": {
+    "sign_in_title": "登录",
+    "sign_in_description": "登录您的账户",
+    "sign_up_title": "注册",
+    "sign_up_description": "创建账户",
+    "email_title": "邮箱",
+    "email_placeholder": "请输入您的邮箱",
+    "password_title": "密码",
+    "password_placeholder": "请输入您的密码",
+    "forgot_password": "忘记密码？",
+    "or": "或",
+    "continue": "继续",
+    "no_account": "还没有账户？",
+    "already_have_account": "已有账户？",
+    "email_sign_in": "使用邮箱登录",
+    "google_sign_in_title": "使用 Google 登录",
+    "github_sign_in_title": "使用 GitHub 登录",
+    "close_title": "关闭",
+    "cancel_title": "取消",
+    "sign_out_title": "退出登录",
+    "billing_title": "账单",
+    "name_title": "姓名",
+    "name_placeholder": "请输入您的姓名",
+    "admin_title": "管理系统",
+    "credits_title": "积分: {credits}",
+    "email_already_registered": "该邮箱已被注册",
+    "redirecting_to_signin": "正在跳转到登录页面...",
+    "password_requirements_error": "密码长度至少为 8 个字符",
+    "email_invalid_error": "请输入有效的邮箱地址"
+  },
+  "payment": {
+    "choose_payment_method": "选择支付方式",
+    "choose_payment_method_description": "",
+    "cancel_title": "取消"
+  },
+  "locale_detector": {
+    "title": "我们检测到您的浏览器语言是 {locale}。是否切换？",
+    "switch_to": "切换到 {locale}"
+  },
+  "soloboard": {
+    "title": "SoloBoard 仪表盘",
+    "description": "在一个地方监控所有网站。追踪 GA4 分析、支付收入和在线状态。",
+    "enter_dashboard": "进入仪表盘",
+    "view_pricing": "查看定价",
+    "page": {
+      "title": "监控所有网站",
+      "subtitle": "在一个地方追踪所有网站的收入、流量和在线状态"
+    },
+    "refresh": "刷新",
+    "loading": "加载中...",
+    "error": {
+      "title": "加载失败",
+      "retry": "重试"
+    },
+    "empty_state": {
+      "title": "还没有网站",
+      "description": "添加您的第一个网站，开始监控收入、流量和在线状态。",
+      "add_button": "添加第一个网站"
+    },
+    "add_button": "添加网站",
+    "site_card": {
+      "today_revenue": "今日收入",
+      "today_visitors": "今日访客",
+      "status": "状态",
+      "view_details": "查看详情"
+    },
+    "status": {
+      "online": "在线",
+      "offline": "离线",
+      "warning": "警告",
+      "checking": "检查中..."
+    },
+    "alerts": {
+      "offline": "网站离线",
+      "no_sales": "今日无销售（通常有销售）",
+      "low_traffic": "流量比平均值低 30%"
+    },
+    "summary": {
+      "total_sites": "总站点数",
+      "total_revenue": "今日总收入",
+      "total_visitors": "今日总访客",
+      "sites_online": "在线站点"
+    },
+    "site_details": {
+      "title": "站点详情",
+      "description": "查看网站的详细指标和历史数据",
+      "back": "返回仪表盘",
+      "settings": "设置",
+      "avg_revenue": "平均收入（7天）",
+      "trend": "趋势",
+      "history": "历史记录",
+      "export": "导出",
+      "date": "日期",
+      "revenue": "收入",
+      "visitors": "访客",
+      "avg_order": "平均订单价值",
+      "platforms": "已连接平台"
+    },
+    "features": {
+      "ga4": {
+        "title": "GA4 分析",
+        "description": "实时追踪访客、页面浏览量和用户行为"
+      },
+      "revenue": {
+        "title": "支付收入",
+        "description": "监控来自 Stripe、Creem、支付宝、PayPal 的今日销售、MRR 和交易数量"
+      },
+      "uptime": {
+        "title": "在线监控",
+        "description": "网站宕机时立即收到警报"
+      }
+    },
+    "upgrade_dialog": {
+      "title": "升级以添加更多站点",
+      "description": "您的 {plan} 套餐已达到 {limit} 个站点的限制",
+      "current_limit": "当前限制",
+      "usage": "已使用 {current} / {limit} 个站点配额",
+      "recommended": "推荐",
+      "most_powerful": "最强大",
+      "base_plan": {
+        "title": "Base 套餐",
+        "description": "适合小型项目和个人开发者",
+        "price": "¥99",
+        "period": "/月",
+        "billing": "按月计费，随时取消",
+        "features": {
+          "sites": "最多 5 个站点",
+          "monitoring": "实时监控和告警",
+          "email": "邮件通知",
+          "stats": "收入和流量统计",
+          "credits": "1000 积分/月",
+          "history": "7天数据历史"
+        }
+      },
+      "pro_plan": {
+        "title": "Pro 套餐",
+        "description": "适合专业用户和团队",
+        "price": "¥199",
+        "period": "/月",
+        "billing": "按月计费，随时取消",
+        "features": {
+          "sites": "无限站点",
+          "all_base": "全部 Base 功能",
+          "advanced": "高级分析和报告",
+          "api": "API 访问权限",
+          "credits": "5000 积分/月",
+          "history": "90天数据历史",
+          "support": "优先技术支持"
+        }
+      },
+      "upgrade_now": "立即升级",
+      "comparison": {
+        "title": "功能对比",
+        "feature": "功能",
+        "free": "免费",
+        "base": "Base",
+        "pro": "Pro",
+        "sites": "站点数量",
+        "email_alerts": "邮件告警",
+        "api_access": "API 访问",
+        "data_history": "数据历史",
+        "days": "天"
+      },
+      "footer": "💡 所有套餐都支持随时取消，无需长期承诺",
+      "contact": "有问题？",
+      "contact_us": "联系我们"
+    }
+  }
+}

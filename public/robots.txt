@@ -1,0 +1,32 @@
+# https://www.soloboard.app/robots.txt
+
+User-agent: *
+# 允许抓取营销核心页面
+Allow: /
+Allow: /*/pricing
+Allow: /*/faq
+Allow: /*/about
+Allow: /*/contact
+Allow: /*/blog
+Allow: /*/soloboard
+Allow: /_next/static/
+Allow: /static/
+
+# 隐私禁区：绝对屏蔽用户私有数据和操作逻辑
+Disallow: /api/
+Disallow: /*/dashboard/
+Disallow: /*/settings/
+Disallow: /*/admin/
+Disallow: /*/activity/
+Disallow: /*/sign-in
+Disallow: /*/sign-up
+Disallow: /*/test/
+
+# 屏蔽搜索参数页面，防止权重分散
+Disallow: /*?*
+
+# 站点地图：使用绝对地址
+Sitemap: https://www.soloboard.app/sitemap.xml
+
+# 建议爬虫抓取间隔
+Crawl-delay: 1

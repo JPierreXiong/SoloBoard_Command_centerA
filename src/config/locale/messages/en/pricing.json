@@ -1,0 +1,123 @@
+{
+  "metadata": {
+    "title": "Pricing",
+    "description": "Choose your SoloBoard plan"
+  },
+  "pricing": {
+    "id": "pricing",
+    "sr_only_title": "SoloBoard Pricing",
+    "title": "Pricing",
+    "description": "Monitor all your sites in one dashboard. Start free, upgrade when ready.",
+    "groups": [
+      {
+        "name": "monthly",
+        "title": "Monthly",
+        "is_featured": true,
+        "label": "Flexible"
+      }
+    ],
+    "items": [
+      {
+        "title": "Free",
+        "description": "Perfect for trying out",
+        "label": "Get Started",
+        "features_title": "Includes",
+        "features": [
+          "1 project",
+          "3 data sources (GA4/Stripe/Uptime)",
+          "48-hour auto-refresh",
+          "7-day data cache",
+          "Basic dashboard",
+          "Community support"
+        ],
+        "interval": "month",
+        "amount": 0,
+        "currency": "USD",
+        "price": "$0",
+        "original_price": "",
+        "unit": "/ forever",
+        "is_featured": false,
+        "tip": "Perfect for trying out the service!",
+        "button": {
+          "title": "Start Free",
+          "url": "/sign-up",
+          "icon": "LayoutDashboard"
+        },
+        "product_id": "soloboard-free",
+        "product_name": "SoloBoard Free",
+        "group": "monthly",
+        "plan_name": "Free"
+      },
+      {
+        "title": "Base",
+        "description": "For growing entrepreneurs",
+        "label": "Popular",
+        "features_title": "Everything in Free, plus",
+        "features": [
+          "5 projects",
+          "All data sources (+ Shopify/Lemon Squeezy)",
+          "6-hour auto-refresh",
+          "1-year history data",
+          "Advanced analytics",
+          "Email alerts",
+          "Priority support"
+        ],
+        "interval": "month",
+        "amount": 1990,
+        "currency": "USD",
+        "price": "$19.9",
+        "original_price": "",
+        "unit": "/ month",
+        "is_featured": true,
+        "tip": "Best for solo entrepreneurs!",
+        "button": {
+          "title": "Get Base",
+          "url": "/#pricing",
+          "icon": "Zap"
+        },
+        "product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "product_name": "SoloBoard Base",
+        "payment_product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "group": "monthly",
+        "plan_name": "Base"
+      },
+      {
+        "title": "Pro",
+        "description": "For power users",
+        "label": "Premium",
+        "features_title": "Everything in Base, plus",
+        "features": [
+          "10 projects",
+          "60-minute real-time sync",
+          "Permanent history",
+          "White-label & custom domain",
+          "Team collaboration",
+          "API access",
+          "Dedicated support"
+        ],
+        "interval": "month",
+        "amount": 3990,
+        "currency": "USD",
+        "price": "$39.9",
+        "original_price": "",
+        "unit": "/ month",
+        "is_featured": false,
+        "tip": "Perfect for agencies!",
+        "button": {
+          "title": "Get Pro",
+          "url": "/#pricing",
+          "icon": "Crown"
+        },
+        "product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "product_name": "SoloBoard Pro",
+        "payment_product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "group": "monthly",
+        "plan_name": "Pro"
+      }
+    ]
+  },
+  "page": {
+    "current_plan": "Current Plan",
+    "processing": "Processing"
+  }
+}

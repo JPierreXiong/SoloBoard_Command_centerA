@@ -1,0 +1,71 @@
+# ============================================
+# SoloBoard Command Center - 环境变量模板
+# ============================================
+# 复制此文件内容到 Vercel Dashboard 的环境变量配置中
+# ============================================
+
+# ============================================
+# 基础应用配置
+# ============================================
+NEXT_PUBLIC_APP_URL=https://soloboard-command-center-b.vercel.app
+NEXT_PUBLIC_APP_NAME=SoloBoard Command Center
+NEXT_PUBLIC_DEFAULT_LOCALE=en
+NEXT_PUBLIC_THEME=default
+NEXT_PUBLIC_APPEARANCE=system
+
+# ============================================
+# 数据库配置 (必需 - 请填写实际值)
+# ============================================
+DATABASE_URL=postgresql://user:password@host:5432/database
+DATABASE_PROVIDER=postgresql
+
+# ============================================
+# 认证配置 (必需 - 请生成实际密钥)
+# ============================================
+# 生成命令: openssl rand -base64 32
+AUTH_SECRET=your-auth-secret-key-here
+
+# ============================================
+# 站点加密配置 (必需 - 请生成实际密钥)
+# ============================================
+# 生成命令: openssl rand -base64 32
+ENCRYPTION_KEY=your-encryption-key-here
+
+# ============================================
+# Upstash QStash 配置 (必需)
+# ============================================
+# Account: XJP_product
+# API: 08976337-b4a3-48c8-99b1-e6c1ba91f92b
+QSTASH_URL=https://qstash.upstash.io
+QSTASH_TOKEN=eyJVc2VySUQiOiIzNmRlMTBmYy04MzI5LTQ0MjEtOTRjYS0wNjE5MGM0YmEwYTYiLCJQYXNzd29yZCI6ImY3ODM0YWI5YWFjNjQ2ODQ4Y2YzNzliYWI4ODkwMWI0In0=
+QSTASH_CURRENT_SIGNING_KEY=sig_4w6GALcpeNi9M46uAEkKVMCFbT7A
+QSTASH_NEXT_SIGNING_KEY=sig_6cFSqmcZpCDciLEHfWnxqoZYGJiQ
+
+# ============================================
+# Creem 支付配置
+# ============================================
+# Account: XJP_SSH_product
+# API: creem_test_5JeYAJ7l8MEVmScHKMLnHZ
+CREEM_ENABLED=true
+CREEM_ENVIRONMENT=production
+CREEM_API_KEY=creem_test_5JeYAJ7l8MEVmScHKMLnHZ
+CREEM_SIGNING_SECRET=whsec_6MzmusMOCJe420udLkejHe
+CREEM_WEBHOOK_URL=https://soloboard-command-center-b.vercel.app/api/webhooks/creem
+
+# Creem 产品 ID 配置
+# Base Plan: 19.9 USD - prod_3i3wLrjX9sQiwts95zv1FG
+# Pro Plan: 39.9 USD - prod_n1rGx5cxwauihvqwWRHxi
+CREEM_PRODUCT_IDS={"base-annual":"prod_3i3wLrjX9sQiwts95zv1FG","pro-annual":"prod_n1rGx5cxwauihvqwWRHxi"}
+
+# ============================================
+# 支付提供商配置
+# ============================================
+DEFAULT_PAYMENT_PROVIDER=creem
+SELECT_PAYMENT_ENABLED=false
+
+# ============================================
+# 系统环境变量
+# ============================================
+NODE_ENV=production
+NEXT_TELEMETRY_DISABLED=1
+

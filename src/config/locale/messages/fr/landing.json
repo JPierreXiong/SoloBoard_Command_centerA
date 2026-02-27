@@ -1,0 +1,304 @@
+{
+  "header": {
+    "id": "header",
+    "brand": {
+      "title": "SoloBoard",
+      "url": "/"
+    },
+    "nav": {
+      "items": [
+        {
+          "title": "Tableau de bord",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Tarification",
+          "url": "/pricing",
+          "icon": "DollarSign"
+        }
+      ]
+    },
+    "buttons": [],
+    "user_nav": {
+      "show_name": true,
+      "show_credits": true,
+      "show_sign_out": true,
+      "items": [
+        {
+          "title": "Tableau de bord",
+          "url": "/soloboard",
+          "icon": "LayoutDashboard"
+        },
+        {
+          "title": "Facturation",
+          "url": "/settings/billing",
+          "icon": "CreditCard"
+        },
+        {
+          "title": "Activité",
+          "url": "/activity",
+          "icon": "Activity"
+        }
+      ]
+    },
+    "show_sign": true,
+    "show_theme": true,
+    "show_locale": true
+  },
+  "hero": {
+    "id": "hero",
+    "title": "Surveillez tous vos sites sur un seul écran",
+    "highlight_text": "",
+    "description": "Arrêtez de changer d'onglets. Suivez les analyses GA4, les revenus de paiement (Stripe, Creem, Alipay, PayPal) et la disponibilité de jusqu'à 10 sites dans un seul tableau de bord magnifique. Conçu pour les entrepreneurs solo.",
+    "announcement": {
+      "badge": "Efficacité",
+      "title": "⚡ Économisez 2 heures par jour",
+      "url": "#how-it-works"
+    },
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Aucune carte de crédit requise</span>",
+    "buttons": [
+      {
+        "title": "Commencer gratuitement",
+        "icon": "LayoutDashboard",
+        "url": "/sign-up",
+        "target": "_self",
+        "variant": "default",
+        "className": ""
+      },
+      {
+        "title": "Voir la démo",
+        "icon": "Play",
+        "url": "/soloboard",
+        "target": "_self",
+        "variant": "outline",
+        "className": ""
+      }
+    ],
+    "show_avatars": false,
+    "avatars_tip": "",
+    "show_award": false
+  },
+  "how-it-works": {
+    "id": "how-it-works",
+    "title": "Comment ça fonctionne",
+    "description": "Un tableau de bord pour tout gérer",
+    "items": [
+      {
+        "title": "Connecter les sites",
+        "description": "Ajoutez vos sites, connectez GA4, Stripe et la surveillance en ligne avec des clés API sécurisées.",
+        "icon": "Link"
+      },
+      {
+        "title": "Synchronisation en temps réel",
+        "description": "Les données se synchronisent automatiquement toutes les 15 minutes. Consultez les visiteurs d'aujourd'hui, les revenus et l'état en ligne en un coup d'œil.",
+        "icon": "RefreshCw"
+      },
+      {
+        "title": "Restez concentré",
+        "description": "Plus besoin de changer de contexte. Surveillez tous les projets depuis un magnifique tableau de bord en grille 3x3.",
+        "icon": "Target"
+      }
+    ]
+  },
+  "features": {
+    "id": "features",
+    "title": "Fonctionnalités principales",
+    "description": "Tout ce dont vous avez besoin pour surveiller votre empire en ligne",
+    "items": [
+      {
+        "title": "Analyses GA4",
+        "description": "Suivez les visiteurs, les pages vues et le comportement des utilisateurs pour tous les sites en temps réel.",
+        "icon": "BarChart3"
+      },
+      {
+        "title": "Revenus de paiement",
+        "description": "Surveillez les ventes d'aujourd'hui, le MRR et le nombre de transactions depuis Stripe, Creem, Alipay, PayPal sans ouvrir plusieurs tableaux de bord.",
+        "icon": "DollarSign"
+      },
+      {
+        "title": "Surveillance en ligne",
+        "description": "Recevez des alertes instantanées lorsque les sites tombent. Suivez le temps de réponse et la disponibilité.",
+        "icon": "Activity"
+      },
+      {
+        "title": "Disposition en grille",
+        "description": "Magnifique disposition de tableau de bord 3x3. Glissez-déposez pour réorganiser la priorité de vos sites.",
+        "icon": "LayoutGrid"
+      },
+      {
+        "title": "Données historiques",
+        "description": "Visualisez les tendances et comparez les performances au fil du temps avec des graphiques interactifs.",
+        "icon": "TrendingUp"
+      },
+      {
+        "title": "Sécurisé et privé",
+        "description": "Vos clés API sont chiffrées avec AES-256. Nous ne voyons jamais vos données réelles.",
+        "icon": "Shield"
+      }
+    ]
+  },
+  "faq": {
+    "id": "faq",
+    "title": "Questions fréquemment posées",
+    "description": "Vous avez une autre question ? Contactez-nous par e-mail.",
+    "tip": "Vous ne trouvez pas ce que vous cherchez ? Contactez notre <a href='mailto:support@soloboard.app' class='text-primary font-medium hover:underline'>équipe de support client</a>",
+    "items": [
+      {
+        "question": "Combien de sites puis-je surveiller ?",
+        "answer": "Plan gratuit : 3 sites. Plan Base (19,9 $/mois) : 5 sites. Plan Pro (39,9 $/mois) : 10 sites. Parfait pour les entrepreneurs solo gérant plusieurs projets."
+      },
+      {
+        "question": "Quelles plateformes sont prises en charge ?",
+        "answer": "Actuellement pris en charge : Google Analytics 4, Stripe et surveillance en ligne. Nous ajoutons bientôt Lemon Squeezy, Shopify et Cloudflare Analytics."
+      },
+      {
+        "question": "À quelle fréquence les données se synchronisent-elles ?",
+        "answer": "Gratuit : toutes les 48 heures. Base : toutes les 6 heures. Pro : toutes les 60 minutes. Tous les plans affichent des données en temps réel après la synchronisation."
+      },
+      {
+        "question": "Mes données sont-elles sécurisées ?",
+        "answer": "Oui ! Vos clés API sont chiffrées avec AES-256-CBC avant le stockage. Nous utilisons des pratiques de sécurité standard de l'industrie et n'accédons jamais à vos données réelles."
+      },
+      {
+        "question": "Puis-je exporter des données ?",
+        "answer": "Oui ! Le plan Pro inclut l'exportation CSV et Excel. Parfait pour les rapports mensuels ou le partage avec les clients."
+      },
+      {
+        "question": "Offrez-vous des remboursements ?",
+        "answer": "Oui ! Nous offrons une garantie de remboursement de 14 jours. Si vous n'êtes pas satisfait, nous vous rembourserons sans poser de questions."
+      }
+    ]
+  },
+  "cta": {
+    "id": "cta",
+    "title": "Commencez à surveiller vos sites maintenant",
+    "description": "Rejoignez les entrepreneurs solo qui économisent des heures avec un tableau de bord unifié.",
+    "tip": "<span style=\"font-size: 0.75rem; font-weight: 300;\">Aucune carte de crédit requise • Plan gratuit disponible</span>",
+    "buttons": [
+      {
+        "title": "Commencer gratuitement",
+        "url": "/sign-up",
+        "target": "_self",
+        "icon": "LayoutDashboard",
+        "variant": "default",
+        "className": ""
+      }
+    ]
+  },
+  "subscribe": {
+    "id": "subscribe",
+    "title": "Abonnez-vous à notre newsletter",
+    "description": "Recevez des conseils de productivité et des mises à jour de produits de SoloBoard.",
+    "submit": {
+      "input": {
+        "placeholder": "Entrez votre e-mail"
+      },
+      "button": {
+        "title": "S'abonner"
+      },
+      "action": "/api/subscribe"
+    }
+  },
+  "footer": {
+    "id": "footer",
+    "brand": {
+      "title": "SoloBoard",
+      "description": "SoloBoard est un tableau de bord de surveillance unifié conçu pour les entrepreneurs solo. Suivez les analyses GA4, les revenus Stripe et l'état en ligne de tous vos sites dans une seule interface magnifique.",
+      "url": "/"
+    },
+    "copyright": "SoloBoard - Surveillez tous vos sites sur un seul écran",
+    "nav": {
+      "items": [
+        {
+          "title": "Produit",
+          "children": [
+            {
+              "title": "Tableau de bord",
+              "url": "/soloboard",
+              "target": "_self"
+            },
+            {
+              "title": "Tarification",
+              "url": "/pricing",
+              "target": "_self"
+            },
+            {
+              "title": "FAQ",
+              "url": "/#faq",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Entreprise",
+          "children": [
+            {
+              "title": "À propos",
+              "url": "/about",
+              "target": "_self"
+            },
+            {
+              "title": "Contact",
+              "url": "/contact",
+              "target": "_self"
+            },
+            {
+              "title": "Blog",
+              "url": "/blog",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "Partenaires",
+          "children": [
+            {
+              "title": "Creem",
+              "url": "https://www.creem.io",
+              "target": "_blank"
+            },
+            {
+              "title": "Vercel",
+              "url": "https://vercel.com",
+              "target": "_blank"
+            },
+            {
+              "title": "Neon",
+              "url": "https://neon.tech",
+              "target": "_blank"
+            }
+          ]
+        }
+      ]
+    },
+    "social": {
+      "items": [
+        {
+          "title": "E-mail",
+          "icon": "Mail",
+          "url": "mailto:support@soloboard.app",
+          "target": "_self"
+        }
+      ]
+    },
+    "agreement": {
+      "items": [
+        {
+          "title": "Politique de confidentialité",
+          "url": "/privacy-policy"
+        },
+        {
+          "title": "Conditions d'utilisation",
+          "url": "/terms-of-service"
+        },
+        {
+          "title": "Avertissement",
+          "url": "/disclaimer"
+        }
+      ]
+    },
+    "show_theme": true,
+    "show_locale": true
+  }
+}

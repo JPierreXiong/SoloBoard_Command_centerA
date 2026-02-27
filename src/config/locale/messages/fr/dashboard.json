@@ -1,0 +1,99 @@
+{
+  "title": "Tableau de bord SoloBoard",
+  "subtitle": "Surveillance de {count} sites",
+  "refresh": "Actualiser",
+  "add_site": "Ajouter un site",
+  "stats": {
+    "monitored_sites": "Sites surveillés",
+    "online_status": "En ligne",
+    "last_sync": "Dernière synchro",
+    "not_synced": "Pas encore synchronisé"
+  },
+  "empty": {
+    "title": "Aucun site pour le moment",
+    "description": "Commencez à surveiller vos sites web en ajoutant votre premier site",
+    "add_first": "Ajouter votre premier site"
+  },
+  "errors": {
+    "load_failed": "Échec du chargement des sites",
+    "refresh_failed": "Échec de l'actualisation des données",
+    "refresh_success": "Données actualisées avec succès",
+    "retry": "Réessayer"
+  },
+  "site": {
+    "status": {
+      "online": "En ligne",
+      "offline": "Hors ligne",
+      "unknown": "Inconnu",
+      "active": "Actif",
+      "error": "Erreur",
+      "paused": "En pause"
+    },
+    "metrics": {
+      "visitors": "Visiteurs",
+      "pageviews": "Pages vues",
+      "revenue": "Revenus",
+      "transactions": "Transactions",
+      "uptime": "Disponibilité",
+      "response_time": "Temps de réponse",
+      "no_data": "Aucune donnée",
+      "online": "en ligne",
+      "views": "vues",
+      "primary": "Métrique principale"
+    },
+    "actions": {
+      "view_details": "Voir les tendances",
+      "edit": "Paramètres",
+      "delete": "Supprimer",
+      "deleting": "Suppression...",
+      "delete_confirm": "Êtes-vous sûr de vouloir supprimer le site \"{name}\" ?",
+      "delete_success": "Site supprimé",
+      "delete_failed": "Échec de la suppression",
+      "pause": "Mettre en pause",
+      "resume": "Reprendre"
+    },
+    "last_updated": "Dernière mise à jour",
+    "not_synced": "Non synchronisé",
+    "sync_failed": "Échec de la synchronisation"
+  },
+  "reorder_success": "Ordre enregistré",
+  "reorder_failed": "Échec de l'enregistrement de l'ordre",
+  "add_dialog": {
+    "title": "Ajouter un site de surveillance",
+    "platform_label": "Sélectionner la plateforme",
+    "platform_description": "Choisissez le service que vous souhaitez surveiller",
+    "site_name": "Nom du site",
+    "site_name_placeholder": "par ex., Mon site web",
+    "site_url": "URL du site",
+    "site_url_placeholder": "https://exemple.com",
+    "next": "Suivant",
+    "back": "Retour",
+    "cancel": "Annuler",
+    "submit": "Ajouter le site",
+    "submitting": "Ajout en cours...",
+    "success": "Site ajouté avec succès !",
+    "error": "Échec de l'ajout du site",
+    "platforms": {
+      "uptime": {
+        "title": "Surveillance Uptime",
+        "description": "État en ligne du site web"
+      },
+      "ga4": {
+        "title": "Google Analytics",
+        "description": "Analyses du trafic web"
+      },
+      "stripe": {
+        "title": "Stripe",
+        "description": "Paiement et revenus"
+      },
+      "lemon_squeezy": {
+        "title": "Lemon Squeezy",
+        "description": "Ventes de produits numériques"
+      },
+      "shopify": {
+        "title": "Shopify",
+        "description": "Plateforme e-commerce"
+      }
+    }
+  }
+}

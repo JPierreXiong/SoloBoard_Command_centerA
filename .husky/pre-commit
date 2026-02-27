@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Run linting and type checking before commit
+echo "🔍 Running Next.js ESLint..."
+pnpm run lint || exit 1
+
+echo "🔍 Running TypeScript type check..."
+pnpm run check-types || exit 1
+
+echo "✅ All checks passed!"

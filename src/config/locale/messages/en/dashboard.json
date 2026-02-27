@@ -1,0 +1,99 @@
+{
+  "title": "SoloBoard Dashboard",
+  "subtitle": "Monitoring {count} sites",
+  "refresh": "Refresh",
+  "add_site": "Add Site",
+  "stats": {
+    "monitored_sites": "Monitored Sites",
+    "online_status": "Online",
+    "last_sync": "Last Sync",
+    "not_synced": "Not synced yet"
+  },
+  "empty": {
+    "title": "No Sites Yet",
+    "description": "Start monitoring your websites by adding your first site",
+    "add_first": "Add Your First Site"
+  },
+  "errors": {
+    "load_failed": "Failed to load sites",
+    "refresh_failed": "Failed to refresh data",
+    "refresh_success": "Data refreshed successfully",
+    "retry": "Retry"
+  },
+  "site": {
+    "status": {
+      "online": "Online",
+      "offline": "Offline",
+      "unknown": "Unknown",
+      "active": "Active",
+      "error": "Error",
+      "paused": "Paused"
+    },
+    "metrics": {
+      "visitors": "Visitors",
+      "pageviews": "Page Views",
+      "revenue": "Revenue",
+      "transactions": "Transactions",
+      "uptime": "Uptime",
+      "response_time": "Response Time",
+      "no_data": "No data",
+      "online": "online",
+      "views": "views",
+      "primary": "Primary Metric"
+    },
+    "actions": {
+      "view_details": "View Trends",
+      "edit": "Settings",
+      "delete": "Delete",
+      "deleting": "Deleting...",
+      "delete_confirm": "Are you sure you want to delete site \"{name}\"?",
+      "delete_success": "Site deleted",
+      "delete_failed": "Failed to delete",
+      "pause": "Pause",
+      "resume": "Resume"
+    },
+    "last_updated": "Last Updated",
+    "not_synced": "Not synced",
+    "sync_failed": "Sync failed"
+  },
+  "reorder_success": "Order saved",
+  "reorder_failed": "Failed to save order",
+  "add_dialog": {
+    "title": "Add Monitoring Site",
+    "platform_label": "Select Platform",
+    "platform_description": "Choose the service you want to monitor",
+    "site_name": "Site Name",
+    "site_name_placeholder": "e.g., My Website",
+    "site_url": "Site URL",
+    "site_url_placeholder": "https://example.com",
+    "next": "Next",
+    "back": "Back",
+    "cancel": "Cancel",
+    "submit": "Add Site",
+    "submitting": "Adding...",
+    "success": "Site added successfully!",
+    "error": "Failed to add site",
+    "platforms": {
+      "uptime": {
+        "title": "Uptime Monitoring",
+        "description": "Website online status"
+      },
+      "ga4": {
+        "title": "Google Analytics",
+        "description": "Website traffic analytics"
+      },
+      "stripe": {
+        "title": "Stripe",
+        "description": "Payment and revenue"
+      },
+      "lemon_squeezy": {
+        "title": "Lemon Squeezy",
+        "description": "Digital product sales"
+      },
+      "shopify": {
+        "title": "Shopify",
+        "description": "E-commerce platform"
+      }
+    }
+  }
+}
