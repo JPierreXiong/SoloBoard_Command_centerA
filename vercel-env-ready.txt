@@ -1,0 +1,68 @@
+# ============================================
+# SoloBoard Command Center - Vercel 环境变量
+# 直接复制以下内容到 Vercel Dashboard
+# ============================================
+
+# ============================================
+# 1. 基础应用配置
+# ============================================
+NEXT_PUBLIC_APP_URL=https://solo-board-command-center-a.vercel.app
+AUTH_URL=https://solo-board-command-center-a.vercel.app
+
+# ============================================
+# 2. 数据库配置
+# ============================================
+DATABASE_PROVIDER=postgresql
+
+# ============================================
+# 3. 认证和加密
+# ============================================
+AUTH_SECRET=bLBOyORMFFD2cRWSop2+CBHKwguN1YdE+3Ygh04fF4M=
+ENCRYPTION_KEY=5y01gZrt42j680hEKH5cdMVrDTfFsjOHi9bJwSOnCsY=
+
+# ============================================
+# 4. Upstash QStash 配置
+# ============================================
+QSTASH_URL=https://qstash.upstash.io
+QSTASH_TOKEN=eyJVc2VySUQiOiIzNmRlMTBmYy04MzI5LTQ0MjEtOTRjYS0wNjE5MGM0YmEwYTYiLCJQYXNzd29yZCI6ImY3ODM0YWI5YWFjNjQ2ODQ4Y2YzNzliYWI4ODkwMWI0In0=
+QSTASH_CURRENT_SIGNING_KEY=sig_4w6GALcpeNi9M46uAEkKVMCFbT7A
+QSTASH_NEXT_SIGNING_KEY=sig_6cFSqmcZpCDciLEHfWnxqoZYGJiQ
+
+# ============================================
+# 5. Vercel Blob 存储
+# ============================================
+BLOB_READ_WRITE_TOKEN=vercel_blob_rw_5IL5BOXp3ER4RDd9_ZkvLOnQxWMCHTmNyG7r6W0h7...
+
+# ============================================
+# 6. Creem 支付配置
+# ============================================
+CREEM_ENABLED=true
+CREEM_ENVIRONMENT=sandbox
+CREEM_API_KEY=creem_test_5JeYAJ7l8MEVmScHKMLnHZ
+CREEM_WEBHOOK_SECRET=8ZKWSOENYFrUxFAdudh19R64bcd6wU64Kz4hy1CXdyA=
+CREEM_PRODUCT_ID_BASE=prod_3i3wLrjX9sQiwts95zv1FG
+CREEM_PRODUCT_ID_PRO=prod_n1rGx5cxwauihvqwWRHxi
+CREEM_PRODUCT_IDS={"soloboard_base":"prod_3i3wLrjX9sQiwts95zv1FG","soloboard_pro":"prod_n1rGx5cxwauihvqwWRHxi"}
+
+# ============================================
+# 7. 支付提供商配置
+# ============================================
+DEFAULT_PAYMENT_PROVIDER=creem
+
+# ============================================
+# 8. Resend 邮件配置
+# ============================================
+RESEND_SENDER_EMAIL=support@commandcenter.app
+
+# ============================================
+# 9. Neon 数据库项目
+# ============================================
+NEON_PROJECT_ID=bitter-rice-19503790
+
+# ============================================
+# 10. 系统环境变量
+# ============================================
+NODE_ENV=production
+NEXT_TELEMETRY_DISABLED=1
+
+

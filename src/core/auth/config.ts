@@ -31,7 +31,12 @@ export const authOptions = {
   appName: envConfigs.app_name,
   baseURL: envConfigs.auth_url,
   secret: envConfigs.auth_secret,
-  trustedOrigins: envConfigs.app_url ? [envConfigs.app_url] : [],
+  trustedOrigins: [
+    envConfigs.app_url,
+    'https://solo-board-command-center-a.vercel.app',
+    'https://solo-board-command-center-a-git-master-xiongjpcn-4932s-projects.vercel.app',
+    'https://soloboard-command-center-b.vercel.app',
+  ].filter(Boolean),
   // Add database connection for session persistence
   database: envConfigs.database_url
     ? drizzleAdapter(db(), {

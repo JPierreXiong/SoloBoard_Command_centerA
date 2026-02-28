@@ -173,3 +173,6 @@ Write-Host "`n所有文件修复完成！" -ForegroundColor Green
 Write-Host "现在可以运行: pnpm build" -ForegroundColor Cyan
 
 
+
+
+
