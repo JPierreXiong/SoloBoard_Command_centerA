@@ -1,0 +1,57 @@
+{
+  "upgrade_dialog": {
+    "title": "Upgrade to {plan} Plan - {limit} Sites Limit Reached",
+    "description": "You've reached the maximum number of sites for your {plan} plan. Upgrade to monitor more sites and unlock advanced features.",
+    "current_limit": "Current Limit Reached",
+    "usage": "You're using {current} of {limit} sites",
+    "recommended": "Recommended",
+    "most_powerful": "Most Powerful",
+    "upgrade_now": "Upgrade Now",
+    "base_plan": {
+      "title": "Base Plan",
+      "description": "Perfect for growing businesses",
+      "price": "$19.9",
+      "period": "/month",
+      "billing": "Billed monthly",
+      "features": {
+        "sites": "Up to 5 sites",
+        "monitoring": "Real-time monitoring",
+        "email": "Email alerts",
+        "stats": "Advanced statistics",
+        "credits": "1000 credits/month",
+        "history": "7-day data history"
+      }
+    },
+    "pro_plan": {
+      "title": "Pro Plan",
+      "description": "For power users and agencies",
+      "price": "$39.9",
+      "period": "/month",
+      "billing": "Billed monthly",
+      "features": {
+        "sites": "Unlimited sites",
+        "all_base": "All Base features",
+        "advanced": "Advanced analytics",
+        "api": "API access",
+        "credits": "5000 credits/month",
+        "history": "90-day data history",
+        "support": "Priority support"
+      }
+    },
+    "comparison": {
+      "feature": "Feature",
+      "free": "Free",
+      "base": "Base",
+      "pro": "Pro",
+      "sites": "Monitored Sites",
+      "email_alerts": "Email Alerts",
+      "api_access": "API Access",
+      "data_history": "Data History",
+      "days": "days"
+    },
+    "footer": "All plans include 30-day money-back guarantee",
+    "contact": "Need a custom plan?",
+    "contact_us": "Contact us"
+  }
+}
+

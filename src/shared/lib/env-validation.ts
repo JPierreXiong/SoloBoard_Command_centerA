@@ -9,39 +9,43 @@ const REQUIRED_ENV_VARS = {
   // 基础配置
   NEXT_PUBLIC_APP_URL: 'http://localhost:3000',
   
-  // 数据库配置（Digital Heirloom 必需）
+  // 数据库配置（必需）
   DATABASE_URL: undefined,
   
   // 认证配置（必需）
   AUTH_SECRET: undefined,
   
-  // Supabase 配置（Digital Heirloom 必需）
-  NEXT_PUBLIC_SUPABASE_URL: undefined,
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: undefined,
+  // 加密配置（必需）
+  ENCRYPTION_KEY: undefined,
   
-  // ShipAny 配置（物理资产寄送）
-  SHIPANY_API_KEY: undefined,
-  SHIPANY_MERCHANDISE_ID: undefined,
-  
-  // 邮件配置（死信开关通知）
-  RESEND_API_KEY: undefined,
+  // QStash 配置（定时任务必需）
+  QSTASH_TOKEN: undefined,
+  QSTASH_CURRENT_SIGNING_KEY: undefined,
+  QSTASH_NEXT_SIGNING_KEY: undefined,
 } as const;
 
 const OPTIONAL_ENV_VARS = {
-  // Supabase Service Role Key（仅服务端使用）
-  SUPABASE_SERVICE_ROLE_KEY: undefined,
+  // 支付配置（可选）
+  CREEM_API_KEY: undefined,
+  CREEM_ENABLED: undefined,
+  DEFAULT_PAYMENT_PROVIDER: undefined,
   
-  // ShipAny 发件人配置
-  SHIPANY_SENDER_NAME: undefined,
-  SHIPANY_SENDER_PHONE: undefined,
-  SHIPANY_SENDER_ADDRESS_LINE1: undefined,
-  SHIPANY_SENDER_CITY: undefined,
-  SHIPANY_SENDER_ZIP_CODE: undefined,
-  SHIPANY_SENDER_COUNTRY_CODE: undefined,
+  // 邮件配置（可选 - 用于告警通知）
+  RESEND_API_KEY: undefined,
+  RESEND_SENDER_EMAIL: undefined,
   
-  // 存储配置
+  // 存储配置（可选）
   BLOB_READ_WRITE_TOKEN: undefined,
   STORAGE_PROVIDER: undefined,
+  
+  // Supabase 配置（Digital Heirloom 功能，可选）
+  NEXT_PUBLIC_SUPABASE_URL: undefined,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: undefined,
+  SUPABASE_SERVICE_ROLE_KEY: undefined,
+  
+  // ShipAny 配置（Digital Heirloom 功能，可选）
+  SHIPANY_API_KEY: undefined,
+  SHIPANY_MERCHANDISE_ID: undefined,
 } as const;
 
 /**
@@ -94,7 +98,7 @@ export function validateEnvVars() {
     console.warn('');
   }
 
-  // 验证 Supabase 配置格式
+  // 验证 Supabase 配置格式（如果配置了的话）
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (supabaseUrl && !supabaseUrl.startsWith('https://')) {
     console.warn('⚠️  NEXT_PUBLIC_SUPABASE_URL should start with https://');

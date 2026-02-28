@@ -1,0 +1,57 @@
+{
+  "upgrade_dialog": {
+    "title": "升级到 {plan} 套餐 - 已达到 {limit} 个站点限制",
+    "description": "您已达到 {plan} 套餐的最大站点数量。升级以监控更多站点并解锁高级功能。",
+    "current_limit": "已达到当前限制",
+    "usage": "您正在使用 {current} / {limit} 个站点",
+    "recommended": "推荐",
+    "most_powerful": "最强大",
+    "upgrade_now": "立即升级",
+    "base_plan": {
+      "title": "基础版",
+      "description": "适合成长中的企业",
+      "price": "$19.9",
+      "period": "/月",
+      "billing": "按月计费",
+      "features": {
+        "sites": "最多 5 个站点",
+        "monitoring": "实时监控",
+        "email": "邮件警报",
+        "stats": "高级统计",
+        "credits": "1000 积分/月",
+        "history": "7 天数据历史"
+      }
+    },
+    "pro_plan": {
+      "title": "专业版",
+      "description": "适合高级用户和代理机构",
+      "price": "$39.9",
+      "period": "/月",
+      "billing": "按月计费",
+      "features": {
+        "sites": "无限站点",
+        "all_base": "所有基础版功能",
+        "advanced": "高级分析",
+        "api": "API 访问",
+        "credits": "5000 积分/月",
+        "history": "90 天数据历史",
+        "support": "优先支持"
+      }
+    },
+    "comparison": {
+      "feature": "功能",
+      "free": "免费版",
+      "base": "基础版",
+      "pro": "专业版",
+      "sites": "监控站点",
+      "email_alerts": "邮件警报",
+      "api_access": "API 访问",
+      "data_history": "数据历史",
+      "days": "天"
+    },
+    "footer": "所有套餐包含 30 天退款保证",
+    "contact": "需要定制套餐？",
+    "contact_us": "联系我们"
+  }
+}
+

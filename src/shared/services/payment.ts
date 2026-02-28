@@ -204,37 +204,37 @@ export async function handleCheckoutSuccess({
       );
     }
 
-    // grant credit for order
+    // grant credit for order - DISABLED (积分功能已禁用)
     let newCredit: NewCredit | undefined = undefined;
-    if (order.creditsAmount && order.creditsAmount > 0) {
-      const credits = order.creditsAmount;
-      const expiresAt =
-        credits > 0
-          ? calculateCreditExpirationTime({
-              creditsValidDays: order.creditsValidDays || 0,
-              currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
-            })
-          : null;
+    // if (order.creditsAmount && order.creditsAmount > 0) {
+    //   const credits = order.creditsAmount;
+    //   const expiresAt =
+    //     credits > 0
+    //       ? calculateCreditExpirationTime({
+    //           creditsValidDays: order.creditsValidDays || 0,
+    //           currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
+    //         })
+    //       : null;
 
-      newCredit = {
-        id: getUuid(),
-        userId: order.userId,
-        userEmail: order.userEmail,
-        orderNo: order.orderNo,
-        subscriptionNo: newSubscription?.subscriptionNo,
-        transactionNo: getSnowId(),
-        transactionType: CreditTransactionType.GRANT,
-        transactionScene:
-          order.paymentType === PaymentType.SUBSCRIPTION
-            ? CreditTransactionScene.SUBSCRIPTION
-            : CreditTransactionScene.PAYMENT,
-        credits: credits,
-        remainingCredits: credits,
-        description: `Grant credit`,
-        expiresAt: expiresAt,
-        status: CreditStatus.ACTIVE,
-      };
-    }
+    //   newCredit = {
+    //     id: getUuid(),
+    //     userId: order.userId,
+    //     userEmail: order.userEmail,
+    //     orderNo: order.orderNo,
+    //     subscriptionNo: newSubscription?.subscriptionNo,
+    //     transactionNo: getSnowId(),
+    //     transactionType: CreditTransactionType.GRANT,
+    //     transactionScene:
+    //       order.paymentType === PaymentType.SUBSCRIPTION
+    //         ? CreditTransactionScene.SUBSCRIPTION
+    //         : CreditTransactionScene.PAYMENT,
+    //     credits: credits,
+    //     remainingCredits: credits,
+    //     description: `Grant credit`,
+    //     expiresAt: expiresAt,
+    //     status: CreditStatus.ACTIVE,
+    //   };
+    // }
 
     await updateOrderInTransaction({
       orderNo,
@@ -341,37 +341,37 @@ export async function handlePaymentSuccess({
       );
     }
 
-    // grant credit for order
+    // grant credit for order - DISABLED (积分功能已禁用)
     let newCredit: NewCredit | undefined = undefined;
-    if (order.creditsAmount && order.creditsAmount > 0) {
-      const credits = order.creditsAmount;
-      const expiresAt =
-        credits > 0
-          ? calculateCreditExpirationTime({
-              creditsValidDays: order.creditsValidDays || 0,
-              currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
-            })
-          : null;
+    // if (order.creditsAmount && order.creditsAmount > 0) {
+    //   const credits = order.creditsAmount;
+    //   const expiresAt =
+    //     credits > 0
+    //       ? calculateCreditExpirationTime({
+    //           creditsValidDays: order.creditsValidDays || 0,
+    //           currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
+    //         })
+    //       : null;
 
-      newCredit = {
-        id: getUuid(),
-        userId: order.userId,
-        userEmail: order.userEmail,
-        orderNo: order.orderNo,
-        subscriptionNo: newSubscription?.subscriptionNo,
-        transactionNo: getSnowId(),
-        transactionType: CreditTransactionType.GRANT,
-        transactionScene:
-          order.paymentType === PaymentType.SUBSCRIPTION
-            ? CreditTransactionScene.SUBSCRIPTION
-            : CreditTransactionScene.PAYMENT,
-        credits: credits,
-        remainingCredits: credits,
-        description: `Grant credit`,
-        expiresAt: expiresAt,
-        status: CreditStatus.ACTIVE,
-      };
-    }
+    //   newCredit = {
+    //     id: getUuid(),
+    //     userId: order.userId,
+    //     userEmail: order.userEmail,
+    //     orderNo: order.orderNo,
+    //     subscriptionNo: newSubscription?.subscriptionNo,
+    //     transactionNo: getSnowId(),
+    //     transactionType: CreditTransactionType.GRANT,
+    //     transactionScene:
+    //       order.paymentType === PaymentType.SUBSCRIPTION
+    //         ? CreditTransactionScene.SUBSCRIPTION
+    //         : CreditTransactionScene.PAYMENT,
+    //     credits: credits,
+    //     remainingCredits: credits,
+    //     description: `Grant credit`,
+    //     expiresAt: expiresAt,
+    //     status: CreditStatus.ACTIVE,
+    //   };
+    // }
 
     await updateOrderInTransaction({
       orderNo,
@@ -463,37 +463,37 @@ export async function handleSubscriptionRenewal({
       subscriptionResult: JSON.stringify(session.subscriptionResult),
     };
 
-    // grant credit for renewal order
+    // grant credit for renewal order - DISABLED (积分功能已禁用)
     let newCredit: NewCredit | undefined = undefined;
-    if (order.creditsAmount && order.creditsAmount > 0) {
-      const credits = order.creditsAmount;
-      const expiresAt =
-        credits > 0
-          ? calculateCreditExpirationTime({
-              creditsValidDays: order.creditsValidDays || 0,
-              currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
-            })
-          : null;
+    // if (order.creditsAmount && order.creditsAmount > 0) {
+    //   const credits = order.creditsAmount;
+    //   const expiresAt =
+    //     credits > 0
+    //       ? calculateCreditExpirationTime({
+    //           creditsValidDays: order.creditsValidDays || 0,
+    //           currentPeriodEnd: subscriptionInfo?.currentPeriodEnd,
+    //         })
+    //       : null;
 
-      newCredit = {
-        id: getUuid(),
-        userId: order.userId,
-        userEmail: order.userEmail,
-        orderNo: order.orderNo,
-        subscriptionNo: subscription.subscriptionNo,
-        transactionNo: getSnowId(),
-        transactionType: CreditTransactionType.GRANT,
-        transactionScene:
-          order.paymentType === PaymentType.SUBSCRIPTION
-            ? CreditTransactionScene.SUBSCRIPTION
-            : CreditTransactionScene.PAYMENT,
-        credits: credits,
-        remainingCredits: credits,
-        description: `Grant credit`,
-        expiresAt: expiresAt,
-        status: CreditStatus.ACTIVE,
-      };
-    }
+    //   newCredit = {
+    //     id: getUuid(),
+    //     userId: order.userId,
+    //     userEmail: order.userEmail,
+    //     orderNo: order.orderNo,
+    //     subscriptionNo: subscription.subscriptionNo,
+    //     transactionNo: getSnowId(),
+    //     transactionType: CreditTransactionType.GRANT,
+    //     transactionScene:
+    //       order.paymentType === PaymentType.SUBSCRIPTION
+    //         ? CreditTransactionScene.SUBSCRIPTION
+    //         : CreditTransactionScene.PAYMENT,
+    //     credits: credits,
+    //     remainingCredits: credits,
+    //     description: `Grant credit`,
+    //     expiresAt: expiresAt,
+    //     status: CreditStatus.ACTIVE,
+    //   };
+    // }
 
     await updateSubscriptionInTransaction({
       subscriptionNo,

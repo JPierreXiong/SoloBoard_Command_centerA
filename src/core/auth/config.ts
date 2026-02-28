@@ -7,17 +7,40 @@ import * as schema from '@/config/db/schema';
 import { getUuid } from '@/shared/lib/hash';
 import { getAllConfigs } from '@/shared/models/config';
 
-// Static auth options - NO database connection
-// This ensures zero database calls during build time
+// Helper function to get database provider
+export function getDatabaseProvider(
+  provider: string
+): 'sqlite' | 'pg' | 'mysql' {
+  switch (provider) {
+    case 'sqlite':
+      return 'sqlite';
+    case 'postgresql':
+      return 'pg';
+    case 'mysql':
+      return 'mysql';
+    default:
+      throw new Error(
+        `Unsupported database provider for auth: ${envConfigs.database_provider}`
+      );
+  }
+}
+
+// Static auth options - WITH database connection
+// This ensures auth works properly in all environments
 export const authOptions = {
   appName: envConfigs.app_name,
   baseURL: envConfigs.auth_url,
   secret: envConfigs.auth_secret,
   trustedOrigins: envConfigs.app_url ? [envConfigs.app_url] : [],
+  // Add database connection for session persistence
+  database: envConfigs.database_url
+    ? drizzleAdapter(db(), {
+        provider: getDatabaseProvider(envConfigs.database_provider),
+        schema: schema,
+      })
+    : undefined,
   advanced: {
-    database: {
-      generateId: () => getUuid(),
-    },
+    generateId: () => getUuid(),
   },
   emailAndPassword: {
     enabled: true,
@@ -75,21 +98,4 @@ export async function getSocialProviders(configs: Record<string, string>) {
   }
 
   return providers;
-}
-
-export function getDatabaseProvider(
-  provider: string
-): 'sqlite' | 'pg' | 'mysql' {
-  switch (provider) {
-    case 'sqlite':
-      return 'sqlite';
-    case 'postgresql':
-      return 'pg';
-    case 'mysql':
-      return 'mysql';
-    default:
-      throw new Error(
-        `Unsupported database provider for auth: ${envConfigs.database_provider}`
-      );
-  }
 }

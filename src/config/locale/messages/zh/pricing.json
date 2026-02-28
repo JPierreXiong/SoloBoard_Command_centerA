@@ -75,11 +75,13 @@
           "url": "/#pricing",
           "icon": "Zap"
         },
-        "product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "product_id": "base-annual",
         "product_name": "SoloBoard 基础版",
         "payment_product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
         "group": "monthly",
-        "plan_name": "基础版"
+        "plan_name": "基础版",
+        "credits": 1000,
+        "valid_days": 30
       },
       {
         "title": "专业版",
@@ -108,11 +110,13 @@
           "url": "/#pricing",
           "icon": "Crown"
         },
-        "product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "product_id": "pro-annual",
         "product_name": "SoloBoard 专业版",
         "payment_product_id": "prod_n1rGx5cxwauihvqwWRHxi",
         "group": "monthly",
-        "plan_name": "专业版"
+        "plan_name": "专业版",
+        "credits": 5000,
+        "valid_days": 30
       }
     ]
   },

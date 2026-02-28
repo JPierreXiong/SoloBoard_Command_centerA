@@ -79,34 +79,44 @@ export function SignUp({
     }
   };
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e?: React.FormEvent) => {
+    // 阻止表单默认提交行为
+    if (e) {
+      e.preventDefault();
+    }
+
     if (loading) {
       return;
     }
 
-    if (!email || !password || !name) {
+    // 去除首尾空格
+    const trimmedEmail = email.trim();
+    const trimmedPassword = password.trim();
+    const trimmedName = name.trim();
+
+    if (!trimmedEmail || !trimmedPassword || !trimmedName) {
       toast.error('email, password and name are required');
       return;
     }
 
     // Validate password length before sending
-    if (password.length < 8) {
+    if (trimmedPassword.length < 8) {
       toast.error('Password must be at least 8 characters long');
       return;
     }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(trimmedEmail)) {
       toast.error('Please enter a valid email address');
       return;
     }
 
     await signUp.email(
       {
-        email,
-        password,
-        name,
+        email: trimmedEmail,
+        password: trimmedPassword,
+        name: trimmedName,
         callbackURL: processedCallbackUrl, // Add callbackURL for better-auth
       },
       {
@@ -131,7 +141,12 @@ export function SignUp({
           }
           
           // report affiliate
-          reportAffiliate({ userEmail: email });
+          reportAffiliate({ userEmail: trimmedEmail });
+          
+          // 显示成功提示
+          toast.success('Sign up successful! Redirecting...', {
+            duration: 1500,
+          });
           
           // Grant free plan credits to new user (不阻塞跳转)
           fetch('/api/user/grant-free-credits', {
@@ -143,9 +158,16 @@ export function SignUp({
             }
           });
           
-          // 使用 window.location 确保完整页面跳转（避免需要点击两次）
-          // better-auth 的 callbackURL 可能不会立即生效，所以手动跳转
-          window.location.href = processedCallbackUrl;
+          // 延迟跳转，确保 cookie 已设置
+          setTimeout(() => {
+            // 优先使用 callbackUrl，否则跳转到 soloboard
+            const redirectUrl = processedCallbackUrl && processedCallbackUrl !== '/' 
+              ? processedCallbackUrl 
+              : `/${locale}/soloboard`;
+            
+            // 使用 router.push 进行客户端导航
+            router.push(redirectUrl);
+          }, 500);
         },
         onError: (e: any) => {
           setLoading(false);
@@ -220,7 +242,7 @@ export function SignUp({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4">
+        <form onSubmit={handleSignUp} className="grid gap-4">
           {isEmailAuthEnabled && (
             <>
               <div className="grid gap-2">
@@ -234,6 +256,7 @@ export function SignUp({
                     setName(e.target.value);
                   }}
                   value={name}
+                  autoComplete="name"
                 />
               </div>
 
@@ -248,6 +271,7 @@ export function SignUp({
                     setEmail(e.target.value);
                   }}
                   value={email}
+                  autoComplete="email"
                 />
               </div>
 
@@ -257,7 +281,7 @@ export function SignUp({
                   id="password"
                   type="password"
                   placeholder={t('password_placeholder')}
-                  autoComplete="password"
+                  autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -267,7 +291,6 @@ export function SignUp({
                 type="submit"
                 className="w-full"
                 disabled={loading}
-                onClick={handleSignUp}
               >
                 {loading ? (
                   <Loader2 size={16} className="animate-spin" />
@@ -284,7 +307,7 @@ export function SignUp({
             loading={loading}
             setLoading={setLoading}
           />
-        </div>
+        </form>
       </CardContent>
       {isEmailAuthEnabled && (
         <CardFooter>

@@ -75,11 +75,13 @@
           "url": "/#pricing",
           "icon": "Zap"
         },
-        "product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
+        "product_id": "base-annual",
         "product_name": "SoloBoard Base",
         "payment_product_id": "prod_3i3wLrjX9sQiwts95zv1FG",
         "group": "monthly",
-        "plan_name": "Base"
+        "plan_name": "Base",
+        "credits": 1000,
+        "valid_days": 30
       },
       {
         "title": "Pro",
@@ -108,11 +110,13 @@
           "url": "/#pricing",
           "icon": "Crown"
         },
-        "product_id": "prod_n1rGx5cxwauihvqwWRHxi",
+        "product_id": "pro-annual",
         "product_name": "SoloBoard Pro",
         "payment_product_id": "prod_n1rGx5cxwauihvqwWRHxi",
         "group": "monthly",
-        "plan_name": "Pro"
+        "plan_name": "Pro",
+        "credits": 5000,
+        "valid_days": 30
       }
     ]
   },
