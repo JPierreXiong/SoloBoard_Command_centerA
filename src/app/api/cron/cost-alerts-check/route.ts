@@ -6,6 +6,7 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { verifySignatureAppRouter } from '@upstash/qstash/nextjs';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -50,33 +51,18 @@ async function handler(request: NextRequest) {
   }
 }
 
-// POST 处理（支持 QStash 签名验证）
-export async function POST(request: NextRequest) {
-  // 验证 QStash 签名（如果配置了环境变量）
-  const currentSigningKey = process.env.QSTASH_CURRENT_SIGNING_KEY;
-  const nextSigningKey = process.env.QSTASH_NEXT_SIGNING_KEY;
-  
-  if (currentSigningKey && nextSigningKey) {
-    try {
-      const { verifySignatureAppRouter } = await import('@upstash/qstash/nextjs');
-      const verifiedHandler = verifySignatureAppRouter(handler);
-      return verifiedHandler(request);
-    } catch (error) {
-      console.error('QStash signature verification failed:', error);
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-  }
-  
-  // 如果没有配置签名密钥，直接执行（仅用于开发环境）
-  return handler(request);
-}
+// 使用 Upstash QStash 签名验证包装 handler
+// 在构建时跳过验证（环境变量未设置时）
+export const POST = process.env.QSTASH_CURRENT_SIGNING_KEY && process.env.QSTASH_NEXT_SIGNING_KEY
+  ? verifySignatureAppRouter(handler)
+  : handler;
 
 // 也支持 GET（用于手动测试）
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get('authorization');
   const cronSecret = process.env.CRON_SECRET;
   
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   

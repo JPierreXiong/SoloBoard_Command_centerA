@@ -17,6 +17,16 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY . .
+
+# Set placeholder environment variables for build time
+# These will be overridden at runtime with real values
+ENV QSTASH_URL=https://qstash.upstash.io
+ENV QSTASH_TOKEN=build-time-placeholder
+ENV QSTASH_CURRENT_SIGNING_KEY=build-time-placeholder
+ENV QSTASH_NEXT_SIGNING_KEY=build-time-placeholder
+ENV DATABASE_URL=build-time-placeholder
+ENV BLOB_READ_WRITE_TOKEN=build-time-placeholder
+
 RUN pnpm build
 
 # Production image, copy all the files and run next
