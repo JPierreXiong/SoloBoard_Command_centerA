@@ -1,29 +1,22 @@
 /**
  * Cron Job: 同步所有站点数据
- * GET /api/cron/sync-sites
+ * POST /api/cron/sync-sites
  * 
- * 由 Vercel Cron 定时触发
- * 配置在 vercel.json 中
+ * 由 QStash 定时触发
+ * 使用签名验证确保请求来自 QStash
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { syncAllSites } from '@/shared/services/soloboard/sync-service';
+import { verifySignatureAppRouter } from '@upstash/qstash/nextjs';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 300; // 5 分钟超时
 
-export async function GET(request: NextRequest) {
+async function handler(request: NextRequest) {
   try {
-    // 验证 Cron Secret（可选，增强安全性）
-    const authHeader = request.headers.get('authorization');
-    const cronSecret = process.env.CRON_SECRET;
-
-    if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
-
-    console.log('🔄 Starting scheduled site sync...');
+    console.log('🔄 Starting scheduled site sync (triggered by QStash)...');
     const startTime = Date.now();
 
     // 执行同步
@@ -60,3 +53,9 @@ export async function GET(request: NextRequest) {
     );
   }
 }
+
+// 使用 QStash 签名验证
+export const POST = verifySignatureAppRouter(handler);
+
+// 也支持 GET（用于手动测试）
+export const GET = handler;
