@@ -70,29 +70,20 @@ export function SignIn({
     }
   }
 
-  const handleSignIn = async (e?: React.FormEvent) => {
-    // 阻止表单默认提交行为
-    if (e) {
-      e.preventDefault();
-    }
-
+  const handleSignIn = async () => {
     if (loading) {
       return;
     }
 
-    // 去除首尾空格
-    const trimmedEmail = email.trim();
-    const trimmedPassword = password.trim();
-
-    if (!trimmedEmail || !trimmedPassword) {
+    if (!email || !password) {
       toast.error('email and password are required');
       return;
     }
 
     await signIn.email(
       {
-        email: trimmedEmail,
-        password: trimmedPassword,
+        email,
+        password,
         callbackURL: processedCallbackUrl,
       },
       {
@@ -103,21 +94,14 @@ export function SignIn({
           setLoading(false);
         },
         onSuccess: (ctx) => {
-          // 显示成功提示
-          toast.success('Sign in successful! Redirecting...', {
-            duration: 1500,
-          });
-          
-          // 延迟跳转，确保 cookie 已设置
-          setTimeout(() => {
-            // 优先使用 callbackUrl，否则跳转到 soloboard
-            const redirectUrl = processedCallbackUrl && processedCallbackUrl !== '/' 
-              ? processedCallbackUrl 
-              : `/${locale}/soloboard`;
-            
-            // 使用 router.push 进行客户端导航
-            router.push(redirectUrl);
-          }, 500);
+          // better-auth 的 callbackURL 可能不会立即生效
+          // 使用 window.location.href 确保完整页面跳转（避免需要点击两次）
+          if (processedCallbackUrl && processedCallbackUrl !== '/') {
+            window.location.href = processedCallbackUrl;
+          } else {
+            // 默认跳转到 SoloBoard dashboard
+            window.location.href = '/soloboard';
+          }
         },
         onError: (e: any) => {
           toast.error(e?.error?.message || 'sign in failed');
@@ -138,7 +122,7 @@ export function SignIn({
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSignIn} className="grid gap-4">
+        <div className="grid gap-4">
           {isEmailAuthEnabled && (
             <>
               <div className="grid gap-2">
@@ -152,7 +136,6 @@ export function SignIn({
                     setEmail(e.target.value);
                   }}
                   value={email}
-                  autoComplete="email"
                 />
               </div>
 
@@ -171,7 +154,7 @@ export function SignIn({
                   id="password"
                   type="password"
                   placeholder={t('password_placeholder')}
-                  autoComplete="current-password"
+                  autoComplete="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
@@ -191,6 +174,7 @@ export function SignIn({
                 type="submit"
                 className="w-full"
                 disabled={loading}
+                onClick={handleSignIn}
               >
                 {loading ? (
                   <Loader2 size={16} className="animate-spin" />
@@ -207,7 +191,7 @@ export function SignIn({
             loading={loading}
             setLoading={setLoading}
           />
-        </form>
+        </div>
       </CardContent>
       {isEmailAuthEnabled && (
         <CardFooter>
