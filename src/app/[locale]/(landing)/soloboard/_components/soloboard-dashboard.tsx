@@ -143,7 +143,7 @@ export function SoloBoardDashboard() {
       {!isLoading && !error && (
         <>
           {sortedSites.length === 0 ? (
-            <EmptyState t={t} />
+            <EmptyState t={t} onAddClick={() => setIsAddDialogOpen(true)} />
           ) : (
             <div className="space-y-4">
               {sortedSites.map((site, index) => (
@@ -300,7 +300,7 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
 }
 
 // Empty State Component
-function EmptyState({ t }: { t: any }) {
+function EmptyState({ t, onAddClick }: { t: any; onAddClick: () => void }) {
   return (
     <Card className="border-dashed">
       <CardContent className="flex flex-col items-center justify-center py-16">
@@ -314,7 +314,7 @@ function EmptyState({ t }: { t: any }) {
         <Button 
           size="lg" 
           className="gap-2 shadow-lg hover:shadow-xl transition-all"
-          onClick={() => setIsAddDialogOpen(true)}
+          onClick={onAddClick}
         >
           <Plus className="h-5 w-5" />
           {t('empty_state.add_button')}
