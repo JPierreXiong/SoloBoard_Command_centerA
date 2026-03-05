@@ -57,7 +57,7 @@ export function SoloBoardDashboard() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 mt-24">
+    <div className="container mx-auto px-4 py-8 mt-16">
       {/* Header */}
       <div className="flex items-center justify-between mb-16">
         <div>
@@ -143,7 +143,7 @@ export function SoloBoardDashboard() {
       {!isLoading && !error && (
         <>
           {sortedSites.length === 0 ? (
-            <EmptyState t={t} onAddClick={() => setIsAddDialogOpen(true)} />
+            <EmptyState t={t} />
           ) : (
             <div className="space-y-4">
               {sortedSites.map((site, index) => (
@@ -300,7 +300,7 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
 }
 
 // Empty State Component
-function EmptyState({ t, onAddClick }: { t: any; onAddClick: () => void }) {
+function EmptyState({ t }: { t: any }) {
   return (
     <Card className="border-dashed">
       <CardContent className="flex flex-col items-center justify-center py-16">
@@ -314,7 +314,7 @@ function EmptyState({ t, onAddClick }: { t: any; onAddClick: () => void }) {
         <Button 
           size="lg" 
           className="gap-2 shadow-lg hover:shadow-xl transition-all"
-          onClick={onAddClick}
+          onClick={() => setIsAddDialogOpen(true)}
         >
           <Plus className="h-5 w-5" />
           {t('empty_state.add_button')}

@@ -12,7 +12,7 @@ const withNextIntl = createNextIntlPlugin('./src/core/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: process.env.VERCEL ? undefined : 'standalone',
+  // output: process.env.VERCEL ? undefined : 'standalone',
   reactStrictMode: false,
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   images: {

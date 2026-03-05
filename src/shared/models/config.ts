@@ -68,11 +68,7 @@ export async function getAllConfigs(): Promise<Configs> {
       dbConfigs = await getConfigs();
     } catch (e) {
       console.log(`get configs from db failed:`, e);
-      // Provide default configs when database is not available
-      dbConfigs = {
-        email_auth_enabled: 'true',
-        google_one_tap_enabled: 'false',
-      };
+      dbConfigs = {};
     }
   }
 

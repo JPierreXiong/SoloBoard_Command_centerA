@@ -26,15 +26,22 @@ export default async function LandingPage({
   const t = await getTranslations('landing');
 
   // build page params
+  const heroData = t.raw('hero');
+  const howItWorksData = t.raw('how-it-works');
+  const featuresData = t.raw('features');
+  const subscribeData = t.raw('subscribe');
+  const faqData = t.raw('faq');
+  const ctaData = t.raw('cta');
+
   const page: Landing = {
-    hero: {
-      ...t.raw('hero'),
+    hero: heroData ? {
+      ...heroData,
       // 关闭可能导致误会的"后台截图"图片，符合 Creem 合规要求
       image: undefined,
       image_invert: undefined,
       // 确保不显示虚假用户头像
       show_avatars: false,
-    },
+    } : undefined,
     // 明确设为 undefined 阻止 UI 渲染
     logos: undefined,
     introduce: undefined,
@@ -43,16 +50,16 @@ export default async function LandingPage({
     stats: undefined,
     
     // SoloBoard: 显示功能区块
-    'how-it-works': t.raw('how-it-works'),
-    features: t.raw('features'),
+    'how-it-works': howItWorksData || undefined,
+    features: featuresData || undefined,
     
     // 隐藏用户评价
     testimonials: undefined,
     
     // 可选保留的区块
-    subscribe: t.raw('subscribe'),
-    faq: t.raw('faq'),
-    cta: t.raw('cta'), // 激活 CTA 区块
+    subscribe: subscribeData || undefined,
+    faq: faqData || undefined,
+    cta: ctaData || undefined,
   };
 
   // load page component

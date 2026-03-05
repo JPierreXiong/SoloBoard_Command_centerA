@@ -6,8 +6,7 @@ import { envConfigs } from '@/config';
 // auth client for client-side use
 export const authClient = createAuthClient({
   baseURL: envConfigs.auth_url,
-  // Note: secret should NOT be exposed to client-side
-  // Better Auth handles authentication via HTTP-only cookies
+  secret: envConfigs.auth_secret,
 });
 
 // export auth client methods
@@ -17,7 +16,7 @@ export const { signIn, signUp, signOut, useSession } = authClient;
 export function getAuthClient(configs: Record<string, string>) {
   const authClient = createAuthClient({
     baseURL: envConfigs.auth_url,
-    // Note: secret should NOT be exposed to client-side
+    secret: envConfigs.auth_secret,
     plugins:
       configs.google_client_id && configs.google_one_tap_enabled === 'true'
         ? [

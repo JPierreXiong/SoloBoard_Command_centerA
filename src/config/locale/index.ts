@@ -22,7 +22,6 @@ export const localeMessagesPaths = [
   'showcases',
   'blog',
   'pricing',
-  'soloboard',
   'digital-heirloom',
   'dashboard',
   'settings/sidebar',

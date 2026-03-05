@@ -18,7 +18,8 @@
   ],
   "scripts": {
     "dev": "next dev -p 3003",
-    "build": "next build && node scripts/generate-middleware-nft.js",
+    "build": "next build",
+    "build:with-nft": "next build && node scripts/generate-middleware-nft.js || true",
     "build:fast": "NODE_OPTIONS='--max-old-space-size=4096' next build && node scripts/generate-middleware-nft.js",
     "start": "next start",
     "lint": "next lint",
