@@ -29,13 +29,18 @@
       "maxDuration": 180
     },
     "src/app/api/cron/**/*.ts": {
-      "maxDuration": 60
+      "maxDuration": 300
     }
   },
   "crons": [
     {
       "path": "/api/cron/store-metrics",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/sync-sites",
+      "schedule": "0 */6 * * *",
+      "comment": "Sync all sites every 6 hours"
     }
   ]
 }
