@@ -14,7 +14,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/core/auth';
 import { db } from '@/core/db';
-import { monitoredSites, users, subscriptions } from '@/config/db/schema';
+import { monitoredSites, users } from '@/config/db/schema';
 import { eq, and, gte, count, sql } from 'drizzle-orm';
 
 export const runtime = 'nodejs';
@@ -73,15 +73,15 @@ export async function GET(request: NextRequest) {
       .where(eq(monitoredSites.lastSyncStatus, 'error'));
     const errorSites = errorSitesResult[0]?.count || 0;
 
-    // 按套餐统计站点数
+    // 按套餐统计站点数（使用 users.planType）
     const sitesByPlan = await db()
       .select({
-        plan: subscriptions.planName,
+        plan: users.planType,
         count: count(),
       })
       .from(monitoredSites)
-      .leftJoin(subscriptions, eq(monitoredSites.userId, subscriptions.userId))
-      .groupBy(subscriptions.planName);
+      .leftJoin(users, eq(monitoredSites.userId, users.id))
+      .groupBy(users.planType);
 
     // 按平台统计站点数
     const allSites = await db().select().from(monitoredSites);
