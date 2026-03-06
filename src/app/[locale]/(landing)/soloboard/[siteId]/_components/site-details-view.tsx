@@ -1,6 +1,6 @@
 /**
  * Site Details View Component
- * 网站详情视图 - 连接真实 API
+ * 网站详情视图 - 连接真实 API + 新功能集成
  */
 
 'use client';
@@ -19,12 +19,21 @@ import {
   Calendar,
   Settings,
   RefreshCw,
-  AlertCircle
+  AlertCircle,
+  Download,
+  FileText,
+  FileJson,
+  FileSpreadsheet
 } from 'lucide-react';
 import Link from 'next/link';
 import { useSiteHistory } from '@/shared/hooks/use-site-history';
-import { MiniChart } from '@/components/soloboard/mini-chart';
 import { toast } from 'sonner';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/shared/components/ui/dropdown-menu';
 
 interface SiteDetailsViewProps {
   siteId: string;
@@ -85,8 +94,37 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
 
       toast.success('Site synced successfully');
       refetchHistory();
+      // 重新获取站点信息
+      window.location.reload();
     } catch (err: any) {
       toast.error(err.message || 'Failed to sync site');
+    }
+  };
+
+  // 导出数据
+  const handleExport = async (format: 'csv' | 'json' | 'pdf') => {
+    try {
+      toast.loading(`Exporting ${format.toUpperCase()}...`);
+      
+      const response = await fetch(`/api/soloboard/sites/${siteId}/export?format=${format}`);
+      
+      if (!response.ok) {
+        throw new Error('Export failed');
+      }
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${siteInfo?.name || 'site'}-${new Date().toISOString().split('T')[0]}.${format}`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+      
+      toast.success(`${format.toUpperCase()} exported successfully`);
+    } catch (err: any) {
+      toast.error(err.message || 'Export failed');
     }
   };
 
@@ -142,14 +180,18 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold">{MOCK_SITE.name}</h1>
-            <p className="text-muted-foreground">{MOCK_SITE.domain}</p>
+            <h1 className="text-3xl font-bold">{siteInfo.name}</h1>
+            <p className="text-muted-foreground">{siteInfo.domain}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <Badge variant={MOCK_SITE.status === 'online' ? 'success' : 'destructive'}>
-            {t(`status.${MOCK_SITE.status}`)}
+          <Badge variant={siteInfo.status === 'online' ? 'success' : 'destructive'}>
+            {t(`status.${siteInfo.status}`)}
           </Badge>
+          <Button variant="outline" size="sm" className="gap-2" onClick={handleRefresh}>
+            <RefreshCw className="h-4 w-4" />
+            Sync
+          </Button>
           <Button variant="outline" size="sm" className="gap-2">
             <Settings className="h-4 w-4" />
             {t('site_details.settings')}
@@ -162,26 +204,26 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         <MetricCard
           icon={DollarSign}
           label={t('site_card.today_revenue')}
-          value={`$${MOCK_SITE.todayRevenue.toLocaleString()}`}
+          value={`$${siteInfo.todayRevenue.toLocaleString()}`}
           color="green"
         />
         <MetricCard
           icon={Users}
           label={t('site_card.today_visitors')}
-          value={MOCK_SITE.todayVisitors.toLocaleString()}
+          value={siteInfo.todayVisitors.toLocaleString()}
           color="blue"
         />
         <MetricCard
           icon={Activity}
           label={t('site_details.avg_revenue')}
-          value={`$${Math.round(MOCK_SITE.history.reduce((sum, d) => sum + d.revenue, 0) / MOCK_SITE.history.length)}`}
+          value={`$${avgRevenue.toLocaleString()}`}
           color="purple"
         />
         <MetricCard
           icon={TrendingUp}
           label={t('site_details.trend')}
-          value="+12.5%"
-          color="orange"
+          value={`${trend > 0 ? '+' : ''}${trend.toFixed(1)}%`}
+          color={trend > 0 ? 'green' : 'orange'}
         />
       </div>
 
@@ -191,42 +233,71 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
           <div className="flex items-center justify-between">
             <CardTitle className="flex items-center gap-2">
               <Calendar className="h-5 w-5" />
-              {t('site_details.history')}
+              {t('site_details.history')} ({history.length} days)
             </CardTitle>
-            <Button variant="outline" size="sm">
-              {t('site_details.export')}
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="gap-2">
+                  <Download className="h-4 w-4" />
+                  {t('site_details.export')}
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem onClick={() => handleExport('csv')} className="gap-2">
+                  <FileSpreadsheet className="h-4 w-4" />
+                  Export as CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport('json')} className="gap-2">
+                  <FileJson className="h-4 w-4" />
+                  Export as JSON
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleExport('pdf')} className="gap-2">
+                  <FileText className="h-4 w-4" />
+                  Export as PDF
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="text-left py-3 px-4 font-semibold">{t('site_details.date')}</th>
-                  <th className="text-right py-3 px-4 font-semibold">{t('site_details.revenue')}</th>
-                  <th className="text-right py-3 px-4 font-semibold">{t('site_details.visitors')}</th>
-                  <th className="text-right py-3 px-4 font-semibold">{t('site_details.avg_order')}</th>
-                </tr>
-              </thead>
-              <tbody>
-                {MOCK_SITE.history.map((day) => (
-                  <tr key={day.date} className="border-b hover:bg-muted/50 transition-colors">
-                    <td className="py-3 px-4">{day.date}</td>
-                    <td className="text-right py-3 px-4 text-green-600 font-semibold">
-                      ${day.revenue.toLocaleString()}
-                    </td>
-                    <td className="text-right py-3 px-4 text-blue-600 font-semibold">
-                      {day.visitors.toLocaleString()}
-                    </td>
-                    <td className="text-right py-3 px-4 text-muted-foreground">
-                      ${(day.revenue / Math.max(day.visitors, 1)).toFixed(2)}
-                    </td>
+          {historyLoading ? (
+            <div className="flex items-center justify-center py-8">
+              <RefreshCw className="h-6 w-6 animate-spin text-primary" />
+            </div>
+          ) : history.length === 0 ? (
+            <div className="text-center py-8 text-muted-foreground">
+              No history data available yet
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left py-3 px-4 font-semibold">{t('site_details.date')}</th>
+                    <th className="text-right py-3 px-4 font-semibold">{t('site_details.revenue')}</th>
+                    <th className="text-right py-3 px-4 font-semibold">{t('site_details.visitors')}</th>
+                    <th className="text-right py-3 px-4 font-semibold">{t('site_details.avg_order')}</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {history.map((day) => (
+                    <tr key={day.date} className="border-b hover:bg-muted/50 transition-colors">
+                      <td className="py-3 px-4">{new Date(day.date).toLocaleDateString()}</td>
+                      <td className="text-right py-3 px-4 text-green-600 font-semibold">
+                        ${(day.revenue / 100).toLocaleString()}
+                      </td>
+                      <td className="text-right py-3 px-4 text-blue-600 font-semibold">
+                        {day.visitors.toLocaleString()}
+                      </td>
+                      <td className="text-right py-3 px-4 text-muted-foreground">
+                        ${day.visitors > 0 ? ((day.revenue / 100) / day.visitors).toFixed(2) : '0.00'}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </CardContent>
       </Card>
 
@@ -237,11 +308,15 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         </CardHeader>
         <CardContent>
           <div className="flex gap-2">
-            {MOCK_SITE.platforms.map((platform) => (
-              <Badge key={platform} variant="secondary">
-                {platform.toUpperCase()}
-              </Badge>
-            ))}
+            {siteInfo.platforms && siteInfo.platforms.length > 0 ? (
+              siteInfo.platforms.map((platform) => (
+                <Badge key={platform} variant="secondary">
+                  {platform.toUpperCase()}
+                </Badge>
+              ))
+            ) : (
+              <p className="text-muted-foreground text-sm">No platforms connected yet</p>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -284,10 +359,3 @@ function MetricCard({
     </Card>
   );
 }
-
-
-
-
-
-
-
