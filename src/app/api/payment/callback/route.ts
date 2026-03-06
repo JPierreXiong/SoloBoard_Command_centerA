@@ -66,9 +66,12 @@ export async function GET(req: Request) {
       (order.paymentType === PaymentType.SUBSCRIPTION
         ? `${envConfigs.app_url}/settings/billing`
         : `${envConfigs.app_url}/settings/payments`);
+    
+    console.log('[Payment Callback] Success - Redirecting to:', redirectUrl);
   } catch (e: any) {
-    console.log('checkout callback failed:', e);
-    redirectUrl = `${envConfigs.app_url}/pricing`;
+    console.error('[Payment Callback] Error:', e);
+    // 修复：错误时也跳转到 billing，让用户看到订阅状态
+    redirectUrl = `${envConfigs.app_url}/settings/billing`;
   }
 
   redirect(redirectUrl);

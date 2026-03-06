@@ -13,12 +13,28 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw } from 'lucide-react';
+import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw, MoreVertical, Trash2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Button } from '@/shared/components/ui/button';
 import { Badge } from '@/shared/components/ui/badge';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/shared/components/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/shared/components/ui/dropdown-menu';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/shared/components/ui/alert-dialog';
 import { motion } from 'framer-motion';
 import { useSites } from '@/shared/hooks/use-sites';
 import { SimpleAddSiteDialog } from '@/components/soloboard/simple-add-site-dialog';
@@ -41,6 +57,9 @@ export function SoloBoardDashboard() {
   const t = useTranslations('common.soloboard');
   const { sites, summary, isLoading, error, refetch } = useSites();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
+  const [siteToDelete, setSiteToDelete] = useState<string | null>(null);
+  const [isDeleting, setIsDeleting] = useState(false);
   
   // 🎯 核心改进：异常状态优先排序
   // 排序规则：offline (红) → warning (黄) → online (绿)
@@ -54,6 +73,38 @@ export function SoloBoardDashboard() {
     setIsAddDialogOpen(false);
     refetch();
     toast.success('Website added successfully!');
+  };
+
+  // 处理删除站点
+  const handleDeleteSite = async () => {
+    if (!siteToDelete) return;
+    
+    setIsDeleting(true);
+    try {
+      const response = await fetch(`/api/soloboard/sites/${siteToDelete}`, {
+        method: 'DELETE',
+      });
+      
+      if (response.ok) {
+        toast.success('Website deleted successfully!');
+        refetch();
+      } else {
+        const data = await response.json();
+        toast.error(data.error || 'Failed to delete website');
+      }
+    } catch (error) {
+      toast.error('Failed to delete website');
+    } finally {
+      setIsDeleting(false);
+      setDeleteDialogOpen(false);
+      setSiteToDelete(null);
+    }
+  };
+
+  // 打开删除确认对话框
+  const confirmDelete = (siteId: string) => {
+    setSiteToDelete(siteId);
+    setDeleteDialogOpen(true);
   };
 
   return (
@@ -153,7 +204,7 @@ export function SoloBoardDashboard() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <SiteCard site={site} t={t} />
+                  <SiteCard site={site} t={t} onDelete={confirmDelete} />
                 </motion.div>
               ))}
             </div>
@@ -170,6 +221,28 @@ export function SoloBoardDashboard() {
           <SimpleAddSiteDialog onSuccess={handleAddSuccess} />
         </DialogContent>
       </Dialog>
+
+      {/* 删除确认对话框 */}
+      <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Delete Website</AlertDialogTitle>
+            <AlertDialogDescription>
+              Are you sure you want to delete this website? This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
+            <AlertDialogAction
+              onClick={handleDeleteSite}
+              disabled={isDeleting}
+              className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            >
+              {isDeleting ? 'Deleting...' : 'Delete'}
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
@@ -210,8 +283,8 @@ function SummaryCard({
   );
 }
 
-// Site Card Component - 优化版：显示 Logo
-function SiteCard({ site, t }: { site: Site; t: any }) {
+// Site Card Component - 优化版：显示 Logo + 删除按钮
+function SiteCard({ site, t, onDelete }: { site: Site; t: any; onDelete: (siteId: string) => void }) {
   const statusConfig = {
     offline: {
       color: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
@@ -273,7 +346,7 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
             </div>
           </div>
 
-          {/* Right: Metrics */}
+          {/* Right: Metrics + Actions */}
           <div className="flex items-center gap-8">
             <div className="text-right">
               <p className="text-sm text-muted-foreground">{t('site_card.today_revenue')}</p>
@@ -287,11 +360,37 @@ function SiteCard({ site, t }: { site: Site; t: any }) {
                 {site.todayVisitors.toLocaleString()}
               </p>
             </div>
-            <Link href={`/soloboard/${site.id}`}>
-              <Button variant="outline" size="sm" className="hover:bg-accent transition-colors">
-                {t('site_card.view_details')}
-              </Button>
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link href={`/soloboard/${site.id}`}>
+                <Button variant="outline" size="sm" className="hover:bg-accent transition-colors">
+                  {t('site_card.view_details')}
+                </Button>
+              </Link>
+              
+              {/* 操作菜单 */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+                    <MoreVertical className="h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <DropdownMenuItem asChild>
+                    <a href={site.domain.startsWith('http') ? site.domain : `https://${site.domain}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                      <ExternalLink className="h-4 w-4" />
+                      Visit Website
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={() => onDelete(site.id)}
+                    className="text-destructive focus:text-destructive flex items-center gap-2"
+                  >
+                    <Trash2 className="h-4 w-4" />
+                    Delete
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </CardContent>

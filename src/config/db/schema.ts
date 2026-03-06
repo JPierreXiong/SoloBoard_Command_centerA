@@ -592,6 +592,41 @@ export const syncLogs = pgTable(
   ]
 );
 
+// ============================================
+// Alert Rules - 提醒规则表
+// ============================================
+
+export const alertRules = pgTable(
+  'alert_rules',
+  {
+    id: text('id').primaryKey(),
+    userId: text('user_id')
+      .notNull()
+      .references(() => user.id, { onDelete: 'cascade' }),
+    siteId: text('site_id')
+      .notNull()
+      .references(() => monitoredSites.id, { onDelete: 'cascade' }),
+    type: text('type').notNull(), // offline, revenue_drop, traffic_spike, no_sales
+    threshold: integer('threshold').notNull(), // 阈值（百分比或绝对值）
+    frequency: text('frequency').notNull(), // immediate, daily, weekly
+    channels: text('channels').notNull(), // JSON array: ["email", "telegram"]
+    enabled: boolean('enabled').notNull().default(true),
+    lastTriggeredAt: timestamp('last_triggered_at'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at')
+      .$onUpdate(() => new Date())
+      .notNull(),
+  },
+  (table) => [
+    // Query rules for a site
+    index('idx_alert_rules_site').on(table.siteId),
+    // Query enabled rules
+    index('idx_alert_rules_enabled').on(table.enabled),
+    // Query rules by user
+    index('idx_alert_rules_user').on(table.userId),
+  ]
+);
+
 // Export aliases for compatibility
 export const users = user;
 export { user as userTable };

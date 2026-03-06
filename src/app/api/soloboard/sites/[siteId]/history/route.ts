@@ -1,102 +1,100 @@
-/**
- * SoloBoard - API: 获取站点历史数据
- * 
- * GET /api/soloboard/sites/[siteId]/history?range=24h
- * 
- * 返回站点的历史指标数据，用于趋势图表
- */
-
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/core/db';
-import { siteMetricsHistory, monitoredSites } from '@/config/db/schema';
-import { eq, desc, gte } from 'drizzle-orm';
-import { auth } from '@/core/auth';
+import { eq, desc, gte, sql } from 'drizzle-orm';
+import { getUserInfo } from '@/shared/models/user';
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
+// 定义表结构（临时）
+const monitoredSites = {
+  id: sql`id`,
+  userId: sql`user_id`,
+  name: sql`name`,
+  domain: sql`domain`,
+  url: sql`url`,
+  status: sql`status`,
+};
 
-/**
- * 获取站点历史数据
- */
+const siteMetricsDaily = {
+  id: sql`id`,
+  siteId: sql`site_id`,
+  date: sql`date`,
+  revenue: sql`revenue`,
+  visitors: sql`visitors`,
+  orders: sql`orders`,
+  conversionRate: sql`conversion_rate`,
+  avgOrderValue: sql`avg_order_value`,
+};
+
 export async function GET(
-  request: NextRequest,
+  req: NextRequest,
   { params }: { params: { siteId: string } }
 ) {
   try {
-    // 1. 验证用户身份
-    const session = await auth.api.getSession({
-      headers: request.headers,
-    });
-    
-    if (!session?.user) {
-      return NextResponse.json(
-        { error: 'Unauthorized' },
-        { status: 401 }
-      );
+    // 获取当前用户
+    const user = await getUserInfo();
+    if (!user) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
-    
+
     const { siteId } = params;
-    const { searchParams } = new URL(request.url);
-    const range = searchParams.get('range') || '24h';
-    
-    // 2. 验证站点所有权
-    const site = await db()
-      .select()
-      .from(monitoredSites)
-      .where(eq(monitoredSites.id, siteId))
-      .limit(1)
-      .then((rows: any[]) => rows[0]);
-    
-    if (!site || site.userId !== session.user.id) {
-      return NextResponse.json(
-        { error: 'Site not found' },
-        { status: 404 }
-      );
+    const { searchParams } = new URL(req.url);
+    const days = parseInt(searchParams.get('days') || '30');
+
+    // 验证站点所有权
+    const site = await db().execute(
+      sql`SELECT * FROM monitored_sites WHERE id = ${siteId} AND user_id = ${user.id} LIMIT 1`
+    );
+
+    if (!site || site.length === 0) {
+      return NextResponse.json({ error: 'Site not found' }, { status: 404 });
     }
-    
-    // 3. 计算时间范围
-    const now = new Date();
-    let startTime = new Date();
-    
-    switch (range) {
-      case '24h':
-        startTime.setHours(now.getHours() - 24);
-        break;
-      case '7d':
-        startTime.setDate(now.getDate() - 7);
-        break;
-      case '30d':
-        startTime.setDate(now.getDate() - 30);
-        break;
-      default:
-        startTime.setHours(now.getHours() - 24);
-    }
-    
-    // 4. 查询历史数据
-    const history = await db()
-      .select()
-      .from(siteMetricsHistory)
-      .where(gte(siteMetricsHistory.recordedAt, startTime))
-      .orderBy(desc(siteMetricsHistory.recordedAt))
-      .limit(100);
-    
+
+    // 计算日期范围
+    const startDate = new Date();
+    startDate.setDate(startDate.getDate() - days);
+    const startDateStr = startDate.toISOString().split('T')[0];
+
+    // 获取历史数据
+    const history = await db().execute(
+      sql`
+        SELECT 
+          date,
+          revenue,
+          visitors,
+          orders,
+          conversion_rate as "conversionRate",
+          avg_order_value as "avgOrderValue"
+        FROM site_metrics_daily
+        WHERE site_id = ${siteId}
+          AND date >= ${startDateStr}
+        ORDER BY date DESC
+        LIMIT ${days}
+      `
+    );
+
+    // 格式化数据
+    const formattedHistory = history.map((row: any) => ({
+      date: row.date,
+      revenue: parseFloat(row.revenue || 0),
+      visitors: parseInt(row.visitors || 0),
+      orders: parseInt(row.orders || 0),
+      conversionRate: parseFloat(row.conversionRate || 0),
+      avgOrderValue: parseFloat(row.avgOrderValue || 0),
+    }));
+
     return NextResponse.json({
       success: true,
-      data: history,
-      range,
-    });
-  } catch (error) {
-    console.error('Failed to fetch site history:', error);
-    
-    return NextResponse.json(
-      {
-        success: false,
-        error: error instanceof Error ? error.message : 'Unknown error',
+      history: formattedHistory,
+      site: {
+        id: site[0].id,
+        name: site[0].name,
+        domain: site[0].domain,
       },
+    });
+  } catch (error: any) {
+    console.error('[Site History API] Error:', error);
+    return NextResponse.json(
+      { error: error.message || 'Internal server error' },
       { status: 500 }
     );
   }
 }
-
-
-

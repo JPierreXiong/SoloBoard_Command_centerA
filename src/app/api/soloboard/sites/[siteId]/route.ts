@@ -1,28 +1,24 @@
 /**
- * SoloBoard - API: 删除站点
- * 
  * DELETE /api/soloboard/sites/[siteId]
- * 
- * 删除指定的监控站点
+ * 删除监控站点
  */
 
 import { NextRequest, NextResponse } from 'next/server';
 import { db } from '@/core/db';
-import { monitoredSites } from '@/config/db/schema';
-import { eq, and } from 'drizzle-orm';
+import { monitoredSites, siteMetricsHistory, syncLogs } from '@/config/db/schema';
+import { eq } from 'drizzle-orm';
 import { auth } from '@/core/auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-/**
- * 删除站点
- */
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { siteId: string } }
+  { params }: { params: Promise<{ siteId: string }> }
 ) {
   try {
+    const { siteId } = await params;
+    
     // 1. 验证用户身份
     const session = await auth.api.getSession({
       headers: request.headers,
@@ -35,25 +31,38 @@ export async function DELETE(
       );
     }
     
-    const { siteId } = params;
+    // 2. 验证站点所有权
+    const [site] = await db().select()
+      .from(monitoredSites)
+      .where(eq(monitoredSites.id, siteId))
+      .limit(1);
     
-    // 2. 验证站点所有权并删除
-    const result = await db()
-      .delete(monitoredSites)
-      .where(
-        and(
-          eq(monitoredSites.id, siteId),
-          eq(monitoredSites.userId, session.user.id)
-        )
-      )
-      .returning();
-    
-    if (result.length === 0) {
+    if (!site) {
       return NextResponse.json(
-        { error: 'Site not found or unauthorized' },
+        { error: 'Site not found' },
         { status: 404 }
       );
     }
+    
+    if (site.userId !== session.user.id) {
+      return NextResponse.json(
+        { error: 'Forbidden: You do not own this site' },
+        { status: 403 }
+      );
+    }
+    
+    // 3. 删除相关数据（级联删除）
+    // 删除历史数据
+    await db().delete(siteMetricsHistory)
+      .where(eq(siteMetricsHistory.siteId, siteId));
+    
+    // 删除同步日志
+    await db().delete(syncLogs)
+      .where(eq(syncLogs.siteId, siteId));
+    
+    // 删除站点记录
+    await db().delete(monitoredSites)
+      .where(eq(monitoredSites.id, siteId));
     
     return NextResponse.json({
       success: true,
@@ -71,8 +80,3 @@ export async function DELETE(
     );
   }
 }
-
-
-
-
-
