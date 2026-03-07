@@ -265,18 +265,47 @@ export function SoloBoardDashboard() {
           {sortedSites.length === 0 ? (
             <EmptyState t={t} onAddClick={() => setIsAddDialogOpen(true)} />
           ) : (
-            <div className="space-y-4">
-              {sortedSites.map((site, index) => (
-                <motion.div
-                  key={site.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <SiteCard site={site} t={t} onDelete={confirmDelete} />
-                </motion.div>
-              ))}
-            </div>
+            <>
+              {/* Info Banner - How to see real data */}
+              {sortedSites.some(site => site.todayRevenue === 0 && site.todayVisitors === 0) && (
+                <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800 mb-6">
+                  <CardContent className="p-4">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                        <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-100 mb-1">
+                          Seeing $0 revenue and 0 visitors?
+                        </h3>
+                        <p className="text-sm text-blue-700 dark:text-blue-300 mb-3">
+                          To display real revenue and visitor data, you need to configure API integrations for your websites. 
+                          Click "View Details" on any site card, then click the settings icon to add your Stripe API key, 
+                          Google Analytics 4 property ID, or other integrations.
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-blue-600 dark:text-blue-400">
+                          <CheckCircle2 className="h-4 w-4" />
+                          <span>Uptime monitoring works automatically - no configuration needed!</span>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+              
+              <div className="space-y-4">
+                {sortedSites.map((site, index) => (
+                  <motion.div
+                    key={site.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                  >
+                    <SiteCard site={site} t={t} onDelete={confirmDelete} />
+                  </motion.div>
+                ))}
+              </div>
+            </>
           )}
         </>
       )}

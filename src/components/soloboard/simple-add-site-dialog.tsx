@@ -57,8 +57,12 @@ export function SimpleAddSiteDialog({ onSuccess }: SimpleAddSiteDialogProps) {
         setName('');
         onSuccess?.();
       } else {
-        // 处理订阅限制错误
-        if (response.status === 403 && data.currentPlan) {
+        // Handle duplicate site error
+        if (response.status === 409) {
+          toast.error(data.message || 'This website is already being monitored');
+        }
+        // Handle subscription limit error
+        else if (response.status === 403 && data.currentPlan) {
           setLimitInfo({
             currentPlan: data.currentPlan,
             currentCount: data.currentCount,

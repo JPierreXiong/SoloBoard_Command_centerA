@@ -131,11 +131,28 @@ export async function POST(request: NextRequest) {
       }
     }
     
-    // 5. 🎯 P2: 检查用户站点数量限制（订阅限制）
+    // 5. 🎯 检查重复域名
     const existingSites = await db().select()
       .from(monitoredSites)
       .where(eq(monitoredSites.userId, session.user.id));
     
+    // 检查域名是否已存在
+    const duplicateSite = existingSites.find(
+      site => site.domain === extractedDomain || site.url === url
+    );
+    
+    if (duplicateSite) {
+      return NextResponse.json(
+        { 
+          error: 'Duplicate site',
+          message: `Website "${extractedDomain}" is already being monitored.`,
+          existingSiteId: duplicateSite.id,
+        },
+        { status: 409 }
+      );
+    }
+    
+    // 6. 🎯 P2: 检查用户站点数量限制（订阅限制）
     // 获取用户当前订阅计划
     const currentSubscription = await getCurrentSubscription(session.user.id);
     const planName = currentSubscription?.planName || null;
@@ -157,7 +174,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // 6. 创建新站点记录
+    // 7. 创建新站点记录
     const siteId = nanoid();
     
     await db().insert(monitoredSites).values({
@@ -177,7 +194,7 @@ export async function POST(request: NextRequest) {
       updatedAt: new Date(),
     });
     
-    // 7. 返回成功响应
+    // 8. 返回成功响应
     return NextResponse.json({
       success: true,
       site: {
