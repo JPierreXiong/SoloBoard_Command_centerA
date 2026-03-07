@@ -33,7 +33,7 @@ export function UpgradePromptDialog({
   currentCount,
   limit,
 }: UpgradePromptDialogProps) {
-  const t = useTranslations('soloboard.upgrade_dialog');
+  const t = useTranslations('common.soloboard.upgrade_dialog');
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>

@@ -77,3 +77,5 @@ Write-Host "3. Run: pnpm dev" -ForegroundColor Yellow
 Write-Host ""
 Write-Host "🎉 Setup complete! You can now start developing." -ForegroundColor Green
 
+
+

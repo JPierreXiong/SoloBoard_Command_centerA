@@ -52,6 +52,7 @@ interface SiteInfo {
 
 export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
   const t = useTranslations('common.soloboard');
+  const tStatus = useTranslations('common.soloboard.status');
   const { history, isLoading: historyLoading, error: historyError, refetch: refetchHistory } = useSiteHistory(siteId, 30);
   const [siteInfo, setSiteInfo] = useState<SiteInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -168,6 +169,15 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
     ? ((siteInfo.todayRevenue - history[1].revenue) / Math.max(history[1].revenue, 1)) * 100
     : 0;
 
+  // 安全的数字格式化函数
+  const formatNumber = (num: number): string => {
+    try {
+      return num.toLocaleString('en-US');
+    } catch {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-8 mt-8">
       {/* Header */}
@@ -186,7 +196,7 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         </div>
         <div className="flex items-center gap-3">
           <Badge variant={siteInfo.status === 'online' ? 'success' : 'destructive'}>
-            {t(`status.${siteInfo.status}`)}
+            {tStatus(siteInfo.status)}
           </Badge>
           <Button variant="outline" size="sm" className="gap-2" onClick={handleRefresh}>
             <RefreshCw className="h-4 w-4" />
@@ -204,19 +214,19 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         <MetricCard
           icon={DollarSign}
           label={t('site_card.today_revenue')}
-          value={`$${siteInfo.todayRevenue.toLocaleString()}`}
+          value={`$${formatNumber(siteInfo.todayRevenue)}`}
           color="green"
         />
         <MetricCard
           icon={Users}
           label={t('site_card.today_visitors')}
-          value={siteInfo.todayVisitors.toLocaleString()}
+          value={formatNumber(siteInfo.todayVisitors)}
           color="blue"
         />
         <MetricCard
           icon={Activity}
           label={t('site_details.avg_revenue')}
-          value={`$${avgRevenue.toLocaleString()}`}
+          value={`$${formatNumber(avgRevenue)}`}
           color="purple"
         />
         <MetricCard
@@ -284,10 +294,10 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
                     <tr key={day.date} className="border-b hover:bg-muted/50 transition-colors">
                       <td className="py-3 px-4">{new Date(day.date).toLocaleDateString()}</td>
                       <td className="text-right py-3 px-4 text-green-600 font-semibold">
-                        ${(day.revenue / 100).toLocaleString()}
+                        ${formatNumber(day.revenue / 100)}
                       </td>
                       <td className="text-right py-3 px-4 text-blue-600 font-semibold">
-                        {day.visitors.toLocaleString()}
+                        {formatNumber(day.visitors)}
                       </td>
                       <td className="text-right py-3 px-4 text-muted-foreground">
                         ${day.visitors > 0 ? ((day.revenue / 100) / day.visitors).toFixed(2) : '0.00'}
