@@ -205,15 +205,23 @@ export async function DELETE(
     }
     
     // 3. 删除相关数据（级联删除）
-    // 删除历史数据
-    await db().delete(siteMetricsHistory)
-      .where(eq(siteMetricsHistory.siteId, siteId));
+    try {
+      // 删除历史数据（如果存在）
+      await db().delete(siteMetricsHistory)
+        .where(eq(siteMetricsHistory.siteId, siteId));
+    } catch (error) {
+      console.log('No history data to delete or error:', error);
+    }
     
-    // 删除同步日志
-    await db().delete(syncLogs)
-      .where(eq(syncLogs.siteId, siteId));
+    try {
+      // 删除同步日志（如果存在）
+      await db().delete(syncLogs)
+        .where(eq(syncLogs.siteId, siteId));
+    } catch (error) {
+      console.log('No sync logs to delete or error:', error);
+    }
     
-    // 删除站点记录
+    // 删除站点记录（主要操作）
     await db().delete(monitoredSites)
       .where(eq(monitoredSites.id, siteId));
     

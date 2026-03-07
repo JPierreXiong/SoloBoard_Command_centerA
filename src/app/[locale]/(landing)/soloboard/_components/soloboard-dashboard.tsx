@@ -133,7 +133,7 @@ export function SoloBoardDashboard() {
   return (
     <div className="container mx-auto px-4 py-8 mt-16">
       {/* Header */}
-      <div className="flex items-center justify-between mb-16">
+      <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold mb-2">{t('page.title')}</h1>
           <p className="text-muted-foreground">{t('page.subtitle')}</p>
@@ -168,6 +168,43 @@ export function SoloBoardDashboard() {
           </Button>
         </div>
       </div>
+
+      {/* Plan Quota Info */}
+      {!isLoading && !error && (
+        <div className="mb-8">
+          <Card className="border-blue-200 bg-blue-50 dark:bg-blue-950 dark:border-blue-800">
+            <CardContent className="p-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                    <Globe className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-blue-900 dark:text-blue-100">
+                      Current Plan: <span className="font-bold">Free</span>
+                    </p>
+                    <p className="text-xs text-blue-700 dark:text-blue-300">
+                      {sites.length} / 1 site used
+                      {sites.length >= 1 && (
+                        <span className="ml-2 text-orange-600 dark:text-orange-400 font-semibold">
+                          • Limit reached
+                        </span>
+                      )}
+                    </p>
+                  </div>
+                </div>
+                {sites.length >= 1 && (
+                  <Link href="/pricing">
+                    <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
+                      Upgrade to Base (5 sites) or Pro (Unlimited)
+                    </Button>
+                  </Link>
+                )}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      )}
 
       {/* Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
