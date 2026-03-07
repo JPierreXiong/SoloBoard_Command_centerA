@@ -566,8 +566,6 @@ export const siteMetricsDaily = pgTable(
     date: timestamp('date').notNull(), // Snapshot date
     revenue: integer('revenue').default(0), // Total revenue in cents
     visitors: integer('visitors').default(0), // Total visitors
-    uptimePercentage: integer('uptime_percentage').default(100), // Uptime %
-    responseTime: integer('response_time').default(0), // Response time in ms
     createdAt: timestamp('created_at').defaultNow().notNull(),
   },
   (table) => [
