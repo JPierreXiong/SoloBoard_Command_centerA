@@ -13,7 +13,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw, MoreVertical, Trash2, ExternalLink } from 'lucide-react';
+import { Plus, TrendingUp, Users, Globe, AlertCircle, RefreshCw, MoreVertical, Trash2, ExternalLink, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/components/ui/card';
 import { Button } from '@/shared/components/ui/button';
@@ -38,6 +38,7 @@ import {
 import { motion } from 'framer-motion';
 import { useSites } from '@/shared/hooks/use-sites';
 import { SimpleAddSiteDialog } from '@/components/soloboard/simple-add-site-dialog';
+import { WizardBatchAddDialog } from '@/components/soloboard/wizard-batch-add-dialog';
 import { toast } from 'sonner';
 
 type SiteStatus = 'online' | 'offline' | 'warning';
@@ -57,9 +58,11 @@ export function SoloBoardDashboard() {
   const t = useTranslations('common.soloboard');
   const { sites, summary, isLoading, error, refetch } = useSites();
   const [isAddDialogOpen, setIsAddDialogOpen] = useState(false);
+  const [isBatchAddOpen, setIsBatchAddOpen] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [siteToDelete, setSiteToDelete] = useState<string | null>(null);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteConfirmText, setDeleteConfirmText] = useState('');
   
   // 🎯 核心改进：异常状态优先排序
   // 排序规则：offline (红) → warning (黄) → online (绿)
@@ -78,6 +81,16 @@ export function SoloBoardDashboard() {
   // 处理删除站点
   const handleDeleteSite = async () => {
     if (!siteToDelete) return;
+    
+    // 获取要删除的站点信息
+    const site = sites.find(s => s.id === siteToDelete);
+    if (!site) return;
+    
+    // 验证输入的域名
+    if (deleteConfirmText !== site.domain) {
+      toast.error('Domain name does not match');
+      return;
+    }
     
     setIsDeleting(true);
     try {
@@ -98,13 +111,23 @@ export function SoloBoardDashboard() {
       setIsDeleting(false);
       setDeleteDialogOpen(false);
       setSiteToDelete(null);
+      setDeleteConfirmText('');
     }
   };
 
   // 打开删除确认对话框
   const confirmDelete = (siteId: string) => {
     setSiteToDelete(siteId);
+    setDeleteConfirmText('');
     setDeleteDialogOpen(true);
+  };
+
+  // 格式化网站名称 - 避免显示 WWW
+  const formatSiteName = (name: string, domain: string): string => {
+    if (!name || name === 'WWW' || name.toLowerCase() === 'www' || name.trim() === '') {
+      return domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+    }
+    return name;
   };
 
   return (
@@ -127,12 +150,21 @@ export function SoloBoardDashboard() {
             {t('refresh')}
           </Button>
           <Button 
+            variant="outline"
             size="lg" 
-            className="gap-2 shadow-lg hover:shadow-xl transition-all"
+            className="gap-2"
             onClick={() => setIsAddDialogOpen(true)}
           >
             <Plus className="h-5 w-5" />
-            {t('add_button')}
+            {t('add_single_site')}
+          </Button>
+          <Button 
+            size="lg" 
+            className="gap-2 shadow-lg hover:shadow-xl transition-all bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700"
+            onClick={() => setIsBatchAddOpen(true)}
+          >
+            <Zap className="h-5 w-5" />
+            {t('batch_add_sites')}
           </Button>
         </div>
       </div>
@@ -222,23 +254,67 @@ export function SoloBoardDashboard() {
         </DialogContent>
       </Dialog>
 
+      {/* 批量添加站点对话框 - 3步向导式 */}
+      <Dialog open={isBatchAddOpen} onOpenChange={setIsBatchAddOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Batch Add Websites</DialogTitle>
+          </DialogHeader>
+          <WizardBatchAddDialog 
+            onSuccess={() => {
+              setIsBatchAddOpen(false);
+              refetch();
+            }}
+            onClose={() => setIsBatchAddOpen(false)}
+          />
+        </DialogContent>
+      </Dialog>
+
       {/* 删除确认对话框 */}
       <AlertDialog open={deleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Delete Website</AlertDialogTitle>
-            <AlertDialogDescription>
-              Are you sure you want to delete this website? This action cannot be undone.
+            <AlertDialogTitle className="flex items-center gap-2 text-destructive">
+              <AlertCircle className="h-5 w-5" />
+              Delete Website
+            </AlertDialogTitle>
+            <AlertDialogDescription className="space-y-4">
+              <p>
+                This action cannot be undone. This will permanently delete your website
+                and all associated data.
+              </p>
+              {siteToDelete && (() => {
+                const site = sites.find(s => s.id === siteToDelete);
+                return site ? (
+                  <div className="space-y-2">
+                    <label htmlFor="delete-confirm" className="text-sm font-medium text-foreground">
+                      Type <span className="font-mono font-bold">{site.domain}</span> to confirm:
+                    </label>
+                    <input
+                      id="delete-confirm"
+                      type="text"
+                      value={deleteConfirmText}
+                      onChange={(e) => setDeleteConfirmText(e.target.value)}
+                      placeholder={site.domain}
+                      className="w-full px-3 py-2 border rounded-md"
+                      disabled={isDeleting}
+                    />
+                  </div>
+                ) : null;
+              })()}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel disabled={isDeleting}>Cancel</AlertDialogCancel>
             <AlertDialogAction
               onClick={handleDeleteSite}
-              disabled={isDeleting}
+              disabled={isDeleting || (() => {
+                const site = sites.find(s => s.id === siteToDelete);
+                return !site || deleteConfirmText !== site.domain;
+              })()}
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             >
-              {isDeleting ? 'Deleting...' : 'Delete'}
+              {isDeleting ? 'Deleting...' : 'Delete Website'}
             </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
@@ -285,6 +361,16 @@ function SummaryCard({
 
 // Site Card Component - 优化版：显示 Logo + 删除按钮
 function SiteCard({ site, t, onDelete }: { site: Site; t: any; onDelete: (siteId: string) => void }) {
+  // 格式化网站名称
+  const formatSiteName = (name: string, domain: string): string => {
+    if (!name || name === 'WWW' || name.toLowerCase() === 'www' || name.trim() === '') {
+      return domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+    }
+    return name;
+  };
+
+  const displayName = formatSiteName(site.name, site.domain);
+  
   const statusConfig = {
     offline: {
       color: 'bg-red-100 text-red-700 dark:bg-red-950 dark:text-red-300',
@@ -325,13 +411,13 @@ function SiteCard({ site, t, onDelete }: { site: Site; t: any; onDelete: (siteId
               />
             ) : (
               <div className={`w-12 h-12 rounded-lg ${config.color} flex items-center justify-center font-bold text-lg`}>
-                {site.name.charAt(0).toUpperCase()}
+                {displayName.charAt(0).toUpperCase()}
               </div>
             )}
             
             <div>
               <div className="flex items-center gap-2">
-                <h3 className="font-semibold text-lg">{site.name}</h3>
+                <h3 className="font-semibold text-lg">{displayName}</h3>
                 <Badge variant={config.badge as any}>
                   {t(`status.${site.status}`)}
                 </Badge>

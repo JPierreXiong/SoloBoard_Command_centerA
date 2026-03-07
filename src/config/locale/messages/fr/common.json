@@ -64,6 +64,8 @@
       "add_button": "Ajouter votre premier site web"
     },
     "add_button": "Ajouter un site",
+    "add_single_site": "Ajouter un seul site",
+    "batch_add_sites": "Ajouter des sites en lot",
     "site_card": {
       "today_revenue": "Revenus d'aujourd'hui",
       "today_visitors": "Visiteurs d'aujourd'hui",
@@ -170,6 +172,39 @@
       "footer": "💡 Tous les plans permettent l'annulation à tout moment, sans engagement à long terme",
       "contact": "Des questions ?",
       "contact_us": "Contactez-nous"
+    },
+    "batch_add": {
+      "title": "Ajouter des sites en lot",
+      "description": "Ajoutez jusqu'à 10 sites à la fois, prend en charge le collage en lot de la liste de domaines",
+      "quick_import_title": "💡 Conseils d'importation rapide",
+      "quick_import_description": "Copiez la liste de domaines depuis Excel ou Notepad, collez dans la première zone de saisie pour importer en lot. Formats pris en charge : un domaine par ligne, ou \"Nom, Domaine\"",
+      "batch_config_title": "Configuration en lot des clés API (Optionnel)",
+      "stripe_key_label": "Clé Stripe (Revenus)",
+      "stripe_key_placeholder": "sk_live_...",
+      "ga4_property_label": "ID de propriété GA4 (Trafic)",
+      "ga4_property_placeholder": "G-XXXXXX",
+      "apply_button": "Appliquer",
+      "add_row_button": "Ajouter une ligne ({current}/{max})",
+      "progress_text": "Ajout de sites... {success} réussi / {error} échoué",
+      "security_title": "Protection de chiffrement des données activée",
+      "security_description": "Les clés API seront stockées avec un chiffrement AES-256 de niveau militaire",
+      "cancel_button": "Annuler",
+      "submit_button": "Ajouter {count} sites",
+      "submitting_button": "Ajout en cours...",
+      "domain_label": "Domaine",
+      "domain_placeholder": "exemple.com",
+      "name_label": "Nom",
+      "name_placeholder": "Mon site web",
+      "platform_label": "Plateforme",
+      "delete_button": "Supprimer",
+      "status_pending": "En attente",
+      "status_validating": "Validation",
+      "status_success": "Succès",
+      "status_error": "Erreur",
+      "toast_limit_error": "Le nombre de sites dépasse la limite",
+      "toast_batch_error": "Échec de l'ajout en lot",
+      "toast_network_error": "Erreur réseau, veuillez réessayer",
+      "toast_success": "{count} sites ajoutés avec succès"
     }
   }
 }

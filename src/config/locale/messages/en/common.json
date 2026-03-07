@@ -70,6 +70,8 @@
       "add_button": "Add Your First Website"
     },
     "add_button": "Add Website",
+    "add_single_site": "Add Single Site",
+    "batch_add_sites": "Batch Add Sites",
     "site_card": {
       "today_revenue": "Today's Revenue",
       "today_visitors": "Today's Visitors",
@@ -176,6 +178,39 @@
       "footer": "💡 All plans support cancellation anytime, no long-term commitment required",
       "contact": "Questions?",
       "contact_us": "Contact Us"
+    },
+    "batch_add": {
+      "title": "Batch Add Websites",
+      "description": "Add up to 10 websites at once, supports batch paste of domain list",
+      "quick_import_title": "💡 Quick Import Tips",
+      "quick_import_description": "Copy domain list from Excel or Notepad, paste into the first input box to batch import. Supported formats: one domain per line, or \"Name, Domain\"",
+      "batch_config_title": "Batch Configure API Keys (Optional)",
+      "stripe_key_label": "Stripe Key (Revenue)",
+      "stripe_key_placeholder": "sk_live_...",
+      "ga4_property_label": "GA4 Property ID (Traffic)",
+      "ga4_property_placeholder": "G-XXXXXX",
+      "apply_button": "Apply",
+      "add_row_button": "Add Row ({current}/{max})",
+      "progress_text": "Adding sites... {success} succeeded / {error} failed",
+      "security_title": "Data Encryption Protection Activated",
+      "security_description": "API Keys will be stored with AES-256 military-grade encryption",
+      "cancel_button": "Cancel",
+      "submit_button": "Add {count} Sites",
+      "submitting_button": "Adding...",
+      "domain_label": "Domain",
+      "domain_placeholder": "example.com",
+      "name_label": "Name",
+      "name_placeholder": "My Website",
+      "platform_label": "Platform",
+      "delete_button": "Delete",
+      "status_pending": "Pending",
+      "status_validating": "Validating",
+      "status_success": "Success",
+      "status_error": "Error",
+      "toast_limit_error": "Site count exceeds limit",
+      "toast_batch_error": "Batch add failed",
+      "toast_network_error": "Network error, please try again",
+      "toast_success": "Successfully added {count} sites"
     }
   }
 }

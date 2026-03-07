@@ -28,6 +28,8 @@ import {
 import Link from 'next/link';
 import { useSiteHistory } from '@/shared/hooks/use-site-history';
 import { toast } from 'sonner';
+import { SiteSettingsDialog } from '@/components/soloboard/site-settings-dialog';
+import { SyncProgressDialog } from '@/components/soloboard/sync-progress-dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -57,6 +59,8 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
   const [siteInfo, setSiteInfo] = useState<SiteInfo | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [syncProgressOpen, setSyncProgressOpen] = useState(false);
 
   // 获取站点基本信息
   useEffect(() => {
@@ -82,23 +86,21 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
     fetchSiteInfo();
   }, [siteId]);
 
-  // 手动刷新
-  const handleRefresh = async () => {
-    try {
-      const response = await fetch(`/api/soloboard/sites/${siteId}/sync`, {
-        method: 'POST',
-      });
+  // 手动刷新 - 使用新的流式同步
+  const handleRefresh = () => {
+    setSyncProgressOpen(true);
+  };
 
-      if (!response.ok) {
-        throw new Error('Failed to sync site');
-      }
-
-      toast.success('Site synced successfully');
-      refetchHistory();
-      // 重新获取站点信息
-      window.location.reload();
-    } catch (err: any) {
-      toast.error(err.message || 'Failed to sync site');
+  // 同步完成后的回调
+  const handleSyncComplete = async () => {
+    // 局部刷新数据（不刷新整个页面）
+    refetchHistory();
+    
+    // 重新获取站点信息
+    const siteResponse = await fetch(`/api/soloboard/sites/${siteId}/metrics`);
+    if (siteResponse.ok) {
+      const data = await siteResponse.json();
+      setSiteInfo(data.site);
     }
   };
 
@@ -158,24 +160,36 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
 
   // 计算统计数据
   const avgRevenue = history.length > 0 
-    ? Math.round(history.reduce((sum, d) => sum + d.revenue, 0) / history.length)
+    ? Math.round(history.reduce((sum, d) => sum + (d.revenue || 0), 0) / history.length)
     : 0;
   
   const avgVisitors = history.length > 0
-    ? Math.round(history.reduce((sum, d) => sum + d.visitors, 0) / history.length)
+    ? Math.round(history.reduce((sum, d) => sum + (d.visitors || 0), 0) / history.length)
     : 0;
 
-  const trend = history.length >= 2
+  const trend = history.length >= 2 && history[1]?.revenue
     ? ((siteInfo.todayRevenue - history[1].revenue) / Math.max(history[1].revenue, 1)) * 100
     : 0;
 
   // 安全的数字格式化函数
-  const formatNumber = (num: number): string => {
+  const formatNumber = (num: number | undefined): string => {
+    if (num === undefined || num === null || isNaN(num)) {
+      return '0';
+    }
     try {
       return num.toLocaleString('en-US');
     } catch {
       return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     }
+  };
+
+  // 格式化网站名称 - 避免显示 WWW
+  const formatSiteName = (name: string, domain: string): string => {
+    // 如果名称为空、"WWW" 或只是域名前缀，使用域名
+    if (!name || name === 'WWW' || name.toLowerCase() === 'www' || name.trim() === '') {
+      return domain.replace(/^(https?:\/\/)?(www\.)?/, '');
+    }
+    return name;
   };
 
   return (
@@ -190,7 +204,7 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
             </Button>
           </Link>
           <div>
-            <h1 className="text-3xl font-bold">{siteInfo.name}</h1>
+            <h1 className="text-3xl font-bold">{formatSiteName(siteInfo.name, siteInfo.domain)}</h1>
             <p className="text-muted-foreground">{siteInfo.domain}</p>
           </div>
         </div>
@@ -202,7 +216,7 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
             <RefreshCw className="h-4 w-4" />
             Sync
           </Button>
-          <Button variant="outline" size="sm" className="gap-2">
+          <Button variant="outline" size="sm" className="gap-2" onClick={() => setSettingsOpen(true)}>
             <Settings className="h-4 w-4" />
             {t('site_details.settings')}
           </Button>
@@ -214,13 +228,13 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         <MetricCard
           icon={DollarSign}
           label={t('site_card.today_revenue')}
-          value={`$${formatNumber(siteInfo.todayRevenue)}`}
+          value={`$${formatNumber(siteInfo.todayRevenue || 0)}`}
           color="green"
         />
         <MetricCard
           icon={Users}
           label={t('site_card.today_visitors')}
-          value={formatNumber(siteInfo.todayVisitors)}
+          value={formatNumber(siteInfo.todayVisitors || 0)}
           color="blue"
         />
         <MetricCard
@@ -232,7 +246,7 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
         <MetricCard
           icon={TrendingUp}
           label={t('site_details.trend')}
-          value={`${trend > 0 ? '+' : ''}${trend.toFixed(1)}%`}
+          value={`${trend > 0 ? '+' : ''}${formatNumber(trend)}%`}
           color={trend > 0 ? 'green' : 'orange'}
         />
       </div>
@@ -290,20 +304,26 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {history.map((day) => (
-                    <tr key={day.date} className="border-b hover:bg-muted/50 transition-colors">
-                      <td className="py-3 px-4">{new Date(day.date).toLocaleDateString()}</td>
-                      <td className="text-right py-3 px-4 text-green-600 font-semibold">
-                        ${formatNumber(day.revenue / 100)}
-                      </td>
-                      <td className="text-right py-3 px-4 text-blue-600 font-semibold">
-                        {formatNumber(day.visitors)}
-                      </td>
-                      <td className="text-right py-3 px-4 text-muted-foreground">
-                        ${day.visitors > 0 ? ((day.revenue / 100) / day.visitors).toFixed(2) : '0.00'}
-                      </td>
-                    </tr>
-                  ))}
+                  {history.map((day) => {
+                    const revenue = (day.revenue || 0) / 100;
+                    const visitors = day.visitors || 0;
+                    const avgOrder = visitors > 0 ? (revenue / visitors).toFixed(2) : '0.00';
+                    
+                    return (
+                      <tr key={day.date} className="border-b hover:bg-muted/50 transition-colors">
+                        <td className="py-3 px-4">{new Date(day.date).toLocaleDateString()}</td>
+                        <td className="text-right py-3 px-4 text-green-600 font-semibold">
+                          ${formatNumber(revenue)}
+                        </td>
+                        <td className="text-right py-3 px-4 text-blue-600 font-semibold">
+                          {formatNumber(visitors)}
+                        </td>
+                        <td className="text-right py-3 px-4 text-muted-foreground">
+                          ${avgOrder}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -330,6 +350,25 @@ export function SiteDetailsView({ siteId }: SiteDetailsViewProps) {
           </div>
         </CardContent>
       </Card>
+
+      {/* Site Settings Dialog */}
+      <SiteSettingsDialog
+        siteId={siteId}
+        open={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+        onSave={() => {
+          // 重新获取站点信息
+          window.location.reload();
+        }}
+      />
+
+      {/* Sync Progress Dialog */}
+      <SyncProgressDialog
+        siteId={siteId}
+        open={syncProgressOpen}
+        onClose={() => setSyncProgressOpen(false)}
+        onComplete={handleSyncComplete}
+      />
     </div>
   );
 }

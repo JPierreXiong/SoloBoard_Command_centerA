@@ -514,6 +514,8 @@ export const monitoredSites = pgTable(
     url: text('url'),
     apiConfig: jsonb('api_config'), // Encrypted API keys and config
     status: text('status').notNull().default('active'), // active, paused, error
+    trackingScriptId: text('tracking_script_id'), // For JS tracking
+    trackingScriptEnabled: boolean('tracking_script_enabled').default(false),
     lastSyncAt: timestamp('last_sync_at'),
     lastSyncStatus: text('last_sync_status'), // success, error
     lastSyncError: text('last_sync_error'),
@@ -527,6 +529,8 @@ export const monitoredSites = pgTable(
     index('idx_monitored_sites_user').on(table.userId),
     // Query sites by status
     index('idx_monitored_sites_status').on(table.status),
+    // Query by tracking script ID
+    index('idx_monitored_sites_tracking').on(table.trackingScriptId),
   ]
 );
 

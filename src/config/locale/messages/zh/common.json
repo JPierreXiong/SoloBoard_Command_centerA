@@ -64,6 +64,8 @@
       "add_button": "添加第一个网站"
     },
     "add_button": "添加网站",
+    "add_single_site": "添加单个站点",
+    "batch_add_sites": "批量添加站点",
     "site_card": {
       "today_revenue": "今日收入",
       "today_visitors": "今日访客",
@@ -170,6 +172,39 @@
       "footer": "💡 所有套餐都支持随时取消，无需长期承诺",
       "contact": "有问题？",
       "contact_us": "联系我们"
+    },
+    "batch_add": {
+      "title": "批量添加网站",
+      "description": "一次性添加最多 10 个网站，支持批量粘贴域名列表",
+      "quick_import_title": "💡 快速导入技巧",
+      "quick_import_description": "从 Excel 或记事本复制域名列表，粘贴到第一个输入框即可批量导入。支持格式：每行一个域名，或 \"名称, 域名\"",
+      "batch_config_title": "批量配置 API Key (可选)",
+      "stripe_key_label": "Stripe Key (收入)",
+      "stripe_key_placeholder": "sk_live_...",
+      "ga4_property_label": "GA4 Property ID (流量)",
+      "ga4_property_placeholder": "G-XXXXXX",
+      "apply_button": "应用",
+      "add_row_button": "添加一行 ({current}/{max})",
+      "progress_text": "正在添加站点... {success} 成功 / {error} 失败",
+      "security_title": "数据加密保护已激活",
+      "security_description": "API Keys 将通过 AES-256 军事级加密存储",
+      "cancel_button": "取消",
+      "submit_button": "添加 {count} 个站点",
+      "submitting_button": "添加中...",
+      "domain_label": "域名",
+      "domain_placeholder": "example.com",
+      "name_label": "名称",
+      "name_placeholder": "我的网站",
+      "platform_label": "平台",
+      "delete_button": "删除",
+      "status_pending": "待处理",
+      "status_validating": "验证中",
+      "status_success": "成功",
+      "status_error": "错误",
+      "toast_limit_error": "站点数量超过限制",
+      "toast_batch_error": "批量添加失败",
+      "toast_network_error": "网络错误，请重试",
+      "toast_success": "成功添加 {count} 个站点"
     }
   }
 }

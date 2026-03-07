@@ -73,6 +73,14 @@ export async function GET(
       avgOrders: 0,
     };
 
+    // 映射数据库 status 到前端显示状态
+    const getDisplayStatus = (dbStatus: string, lastSyncStatus: string | null) => {
+      if (dbStatus === 'paused' || dbStatus === 'error') return 'offline';
+      if (lastSyncStatus === 'error') return 'offline';
+      if (lastSyncStatus === 'success') return 'online';
+      return 'checking';
+    };
+
     return NextResponse.json({
       success: true,
       site: {
@@ -80,7 +88,7 @@ export async function GET(
         name: siteData.name,
         domain: siteData.domain,
         url: siteData.url,
-        status: siteData.status,
+        status: getDisplayStatus(siteData.status, siteData.last_sync_status),
         logoUrl: siteData.logo_url,
         platform: siteData.platform,
         lastSyncAt: siteData.last_sync_at,

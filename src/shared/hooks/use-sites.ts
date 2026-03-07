@@ -5,7 +5,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface Site {
   id: string;
@@ -45,7 +45,7 @@ export function useSites(): UseSitesReturn {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchSites = async () => {
+  const fetchSites = useCallback(async () => {
     try {
       setIsLoading(true);
       setError(null);
@@ -70,11 +70,11 @@ export function useSites(): UseSitesReturn {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     fetchSites();
-  }, []);
+  }, [fetchSites]);
 
   return {
     sites,

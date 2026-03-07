@@ -65,14 +65,6 @@
         "target": "_self",
         "variant": "default",
         "className": ""
-      },
-      {
-        "title": "View Demo",
-        "icon": "Play",
-        "url": "/soloboard",
-        "target": "_self",
-        "variant": "outline",
-        "className": ""
       }
     ],
     "show_avatars": false,
